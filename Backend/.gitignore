@@ -1,0 +1,29 @@
+
+# Environment Variables
+.env
+
+# Node Modules
+node_modules/
+
+# Build Outputs
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor & System Files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ESLint Cache
+.eslintcache
+
+# Test Coverage
+coverage/
+
+# Database (if applicable)
+db/

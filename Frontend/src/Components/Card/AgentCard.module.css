@@ -1,0 +1,115 @@
+.agentCard{
+    width: 313.5px;
+    height: 432px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow:0 2px 6px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .08);
+}
+.agentImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity 0.3s;
+}
+
+.agentImage:hover {
+    filter: blur(2px);
+    transition: filter 0.3s;
+}
+.agentContainer{
+    position: relative;
+    width:100%;
+    height: 50%;
+}
+.agentStats{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.agentText{
+    padding: 20px;
+}
+.paragraph{
+    margin-top: 3px;
+}
+.agentButtons{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+.tag{
+    position: absolute;
+    top: 3%;
+    left: 4%;
+    z-index: 1000;
+    background-color: #E3A857;
+    color: #ffffff;
+    padding: 4px;
+    border-radius: 13px;
+}
+.profiletag{
+    position: absolute;
+    top: 40%;
+    right: 30%;
+    z-index: 1000;
+    color: #ffffff;
+    padding: 4px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    /* cursor: pointer; */
+}
+
+.agentCard:hover .profiletag {
+    opacity: 1;
+}
+/* CSS */
+.button30 {
+  align-items: center;
+  width: 80%;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  color: white;
+  background-color: black;
+  transform: translateY(-2px);
+}
+
+.button30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}

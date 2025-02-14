@@ -1,0 +1,116 @@
+.card{
+    width: 396px;
+    height: 348px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+    background-color: (255 255 255 / 90%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.imageContainer{
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+.cardImage{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+}
+.cardImage:hover{
+    transform: scale(1.1);
+}
+.priceContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.cardPrice{
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(37,99,235);
+}
+.locationContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 20px 20px 20px;
+}
+.btnContainer{
+  padding: 0px 20px 20px 20px;
+}
+/* CSS */
+.btn {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.3s ease-in-out;  ; 
+}
+
+.btn:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    rgb(37,99,235),
+    rgb(37,99,235),
+    rgb(37,99,235),
+    rgb(37,99,235),
+    rgb(37,99,235),
+    rgb(37,99,235),
+    rgb(37,99,235),
+    rgb(37,99,235),
+    rgb(37,99,235)
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-btn 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-btn {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.btn:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+.btn:hover {
+  transform: scale(1.1);
+}
