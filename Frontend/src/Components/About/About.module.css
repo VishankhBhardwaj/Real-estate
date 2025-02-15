@@ -1,5 +1,5 @@
 .container{
-    background-color: #F5EAD6;
+    background-color: #2B4C67;
 }
 .about{
     display: flex;
@@ -7,6 +7,19 @@
     padding: 40px;
     width: 100%;
     height: 635px;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-out;
+}
+.fadeIn {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-out;
+}
+  
+.fadeOut {
+    opacity: 0.1;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-out;
 }
 .title{
     font-size: 150px;
@@ -25,7 +38,18 @@
     width: 100%;
     height: 235px;
     color: #CBB492;
+    transform: translateY(20px);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-out;
 }
+.fadeInpara {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .fadeOutpara {
+    opacity: 0;
+    transform: translateX(20px);
+  }
 .para{
     font-size: 30px;
     font-weight: 400;
@@ -63,8 +87,51 @@
     align-items: center;
     padding: 20px;
     width: 100%;
-    height: 500px;
-    background-color: #F5E8D8;
+    height: 700px;
+    background-color: #2B4C67;
+}
+.teamCard{
+    background-color:#14232F;
+    width: 1440px;
+    height: 610px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin-right: 130px; */
+}
+.team{
+    margin-bottom: 50px;
+}
+.Footer{
+    width: 100%;
+    height: 400px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    font-size: 50px;
+    color: #CBB492;
+}
+.contact{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    gap: 20px;
+    font-size: 20px;
+    color: #CBB492;
+}
+.contactInfo{
+    margin-top: 100px;
+    margin-right: 40px;
+}
+.contactText{
+    font-size: 20px;
+    color: #CBB492;
+    margin: 20px 20px 20px 20px;
 }
 @media screen and (max-width: 768px){
     .about, .title, .description, .content, .para {

@@ -1,5 +1,6 @@
 import React, { use } from 'react'
 import styles from './Home.module.css'
+import { useInView } from "react-intersection-observer";
 import { FaSearch } from "react-icons/fa";
 import Card from '../Card/Card';
 import AgentCard from '../Card/AgentCard';
@@ -34,9 +35,13 @@ const Home = () => {
               scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
             }
           };
+          const { ref, inView } = useInView({
+            triggerOnce: false, // Set to true if you want the animation only once
+            threshold: 0.2, // Adjust when the animation should trigger
+          });
 return (
     <>
-    <div className={styles.home}>
+    <div className={`${styles.home} ${inView ? styles.fadeIn : styles.fadeOut}`} ref={ref} >  
         <div className={styles.ImageContainer}>
             <h1 className={styles.heading}>Find Your Dream Home</h1>
             <p className={styles.paragraph}>Discover the finest luxury properties <br /> in the most desirable locations worldwide.</p>

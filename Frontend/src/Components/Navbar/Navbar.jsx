@@ -14,11 +14,7 @@ const Navbar = () => {
       {/* Left Part */}
       <div className={styles.leftpart}>
         <div className={styles.logoContainer}>
-        <img
-          className={styles.logo}
-          src="https://imgs.search.brave.com/yo7RiQ_TzRzew_vMCovQ__ezQtyi2bIOI1A6jQMIzPc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYWxsLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMTMvUmVh/bHRvci1Mb2dvLnBu/Zw"
-          alt="logo"
-        />
+        <h2 className={styles.logo}><NavLink to='/' className={styles.logolink}>LuxuryEstates</NavLink></h2>
         </div>
 
         {/* Hamburger Menu (Mobile) */}

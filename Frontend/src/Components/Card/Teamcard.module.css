@@ -2,3 +2,66 @@
     width: 287px;
     height: 323px;
 }
+.teamCard{
+    width: 30%;
+    height: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+.cardContainer {
+    width: 300px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .profileImage {
+    width: 92%;
+    height: 300px;
+    display: block;
+    background-color: #f0f0f0;
+    object-fit: cover;
+  }
+  
+  .infoOverlay {
+    position: absolute;
+    bottom: -10px;
+    left: 57px;
+    right: 3px;
+    background-color: #2d4356;
+    color: #CBB492;
+    padding: 2rem;
+  }
+  
+  .name {
+    font-size: 24px;
+    margin: 0 0 8px 0;
+    color: #CBB492;
+  }
+  
+  .title {
+    font-size: 16px;
+    color: #CBB492;
+    margin: 0 0 16px 0;
+  }
+  
+  .description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+  }
+  
+  .socialLink {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .socialLink img {
+    width: 24px;
+    height: 24px;
+  }

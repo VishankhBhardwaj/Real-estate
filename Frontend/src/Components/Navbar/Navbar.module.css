@@ -21,11 +21,16 @@
 .logo {
     width: 47px;
     height: 52px;
-    margin-left: 0;
+    margin-left: -120px;
+    margin-top: 10px;
     position: absolute;
     z-index: 1000;
     transform: translateY(-17px);
-    
+    color: #E3A857;
+}
+.logolink{
+    text-decoration: none;
+    color: #E3A857;
 }
 
 /* Navigation Links */

@@ -1,10 +1,8 @@
 const express = require('express');
 const app = express();
-require('dotenv').config();
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 require('./db/config');
-const PORT = process.env.PORT || 3000;
 const Usermodel = require('./models/user');
 const Toppicksmodel = require('./models/toppicks');
 app.use(cors());
@@ -75,4 +73,4 @@ app.get('/toppicks', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-app.listen(PORT, () => console.log('Server is running on port ...'+PORT));
+app.listen(3000, () => console.log('Server is running on port 3000...'));
