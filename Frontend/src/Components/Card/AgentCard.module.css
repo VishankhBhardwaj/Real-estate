@@ -58,7 +58,7 @@
     padding: 4px;
     opacity: 0;
     transition: opacity 0.3s;
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
 .agentCard:hover .profiletag {

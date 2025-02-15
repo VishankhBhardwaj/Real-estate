@@ -13,6 +13,13 @@
   }
   .inputfield{
     height: 50px;
+    padding: 10px;
+    font-size: large;
+  }
+  .textarea{
+    height: 150px;
+    padding: 10px;
+    font-size: large;
   }
   .contact {
     display: flex;

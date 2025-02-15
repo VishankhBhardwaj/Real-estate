@@ -76,8 +76,8 @@ return (
     </div>
     <div className={styles.agentshowcase}>
         <div className={styles.agentText2}>
-        <h1 className={styles.agentHeading}>Connect with a local Redfin agent</h1>
-        <p className={styles.agentParagraph}>More people visit Redfin than any other brokerage* <br />and our agents have the experience to price,<br /> market, and sell your home for the best price possible.</p>
+        <h1 className={styles.agentHeading}>Connect with a local LuxuryEstate agent</h1>
+        <p className={styles.agentParagraph}>More people visit LuxuryEstate than any other brokerage* <br />and our agents have the experience to price,<br /> market, and sell your home for the best price possible.</p>
         </div>
         <div className={styles.agentCard}
         ref={scrollContainerRef} style={{ scrollBehavior: "smooth" }}>

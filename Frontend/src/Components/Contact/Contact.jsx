@@ -94,7 +94,7 @@ const Contact = () => {
                         </div>
                         <div className={styles.inputGroup}>
                             <label>Message</label>
-                            <textarea name="message" value={formData.message} onChange={handleChange}></textarea>
+                            <textarea name="message" value={formData.message} onChange={handleChange} className={styles.textarea}></textarea>
                         </div>
                         <button type="submit" className={styles.submitButton}>Submit</button>
                     </form>
