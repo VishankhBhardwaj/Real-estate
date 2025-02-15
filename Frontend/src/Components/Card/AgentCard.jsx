@@ -1,6 +1,11 @@
 import React from 'react'
 import styles from './AgentCard.module.css'
+import {useNavigate} from 'react-router-dom'
 const AgentCard = () => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate('/Details')
+    }
 return (
     <div className={styles.agentCard}>
             <div className={styles.agentContainer}>
@@ -23,7 +28,7 @@ return (
                         </div>      
                     </div>
                     <div className={styles.agentButtons}>
-                    <button class={styles.button30} role="button">View Profile</button>
+                    <button class={styles.button30} role="button" onClick={handleClick}>View Profile</button>
                     </div>
             </div>
     </div>
