@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Home from './Components/Home/Home'
 import Signin from './Components/Signin/Signin'
 import About from './Components/About/About'
+import Mylist from './Components/Mylist/Mylist'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,6 +35,13 @@ const router = createBrowserRouter([
     element: <div>
       <Navbar />
       <h1>Details</h1>
+    </div>
+  },
+  {
+    path: '/Mylist',
+    element: <div>
+      <Navbar />
+      <Mylist />
     </div>
   }
 ])

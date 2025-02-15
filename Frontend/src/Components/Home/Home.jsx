@@ -9,6 +9,7 @@ import { GrFormPrevious } from "react-icons/gr";
 import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import {motion} from 'framer-motion';
 import Contact from '../Contact/Contact';
 const Home = () => {
     const [toppicks, setToppicks] = useState([])
@@ -63,7 +64,8 @@ return (
     <h1 className={styles.heading3}>
         Our Services
     </h1>
-    <div className={styles.ourservices}>
+    <motion.div className={styles.ourservices} animate={{ x: 100 }}
+  transition={{ ease: "easeOut", duration: 2 }} initial={false}>
         <div>
         <img className={styles.agentImage} src="https://cdn.pixabay.com/photo/2017/08/02/00/49/people-2569234_1280.jpg" alt="" />
 
@@ -73,7 +75,7 @@ return (
             <p className={styles.agentParagraph}>Unlike many other agents, Redfin agents <br /> won't ask you to sign an exclusive commitment before <br /> they'll take you on a first tour.</p>
             <button class={styles.button29} role="button">Search for homes</button>
         </div>
-    </div>
+    </motion.div>
     <div className={styles.agentshowcase}>
         <div className={styles.agentText2}>
         <h1 className={styles.agentHeading}>Connect with a local LuxuryEstate agent</h1>

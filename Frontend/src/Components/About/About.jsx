@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './About.module.css'
 import Teamcard from '../Card/Teamcard'
+import { motion } from "framer-motion"
 import { useInView } from 'react-intersection-observer';
 const About = () => {
         const { ref, inView } = useInView({
@@ -8,7 +9,7 @@ const About = () => {
                 threshold: 0.2, // Adjust when the animation should trigger
               });
 return (
-    <div className={styles.container}>
+    <motion.div className={styles.container} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className={`${styles.about} ${inView ? styles.fadeIn : styles.fadeOut}`} ref={ref}>
                     <h1 className={styles.title}>
                     Your Trusted Real Estate Partner</h1>
@@ -55,7 +56,7 @@ info@mysite.com</p>
                      </div>
                     </div>
             </div>
-    </div>
+    </motion.div>
 )
 }
 

@@ -33,7 +33,7 @@ const Navbar = () => {
 
       {/* Right Part */}
       <div className={styles.rightpart}>
-        <NavLink className={styles.text}>MyList</NavLink>
+        <NavLink className={styles.text} to='/Mylist'>MyList</NavLink>
         <button className={styles.btn} onClick={handledingnin}>Sign up/LogIn</button>
       </div>
     </nav>
