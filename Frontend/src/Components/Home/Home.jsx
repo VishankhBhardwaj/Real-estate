@@ -64,7 +64,7 @@ return (
     <h1 className={styles.heading3}>
         Our Services
     </h1>
-    <motion.div className={styles.ourservices} animate={{ x: 100 }}
+    <motion.div className={`${styles.ourservices} animate__animated animate__flipInX`} animate={{ x: 100 } }
   transition={{ ease: "easeOut", duration: 2 }} initial={false}>
         <div>
         <img className={styles.agentImage} src="https://cdn.pixabay.com/photo/2017/08/02/00/49/people-2569234_1280.jpg" alt="" />

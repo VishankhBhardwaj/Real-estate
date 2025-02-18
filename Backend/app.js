@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 require('./db/config');
 const Usermodel = require('./models/user');
 const Toppicksmodel = require('./models/toppicks');
+const Propertiesmodel = require('./models/Properties');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -71,6 +72,18 @@ app.get('/toppicks', async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).send('Server Error');
+    }
+});
+app.get("/properties", async (req, res) => {
+    try{
+        const property= await Propertiesmodel.find();
+        if(property.length==0){
+            return res.status(400).json({msg:'No Properties found'});
+        }else{
+            res.json(property);
+        }
+    }catch(err){
+        console.log(err);
     }
 });
 app.listen(3000, () => console.log('Server is running on port 3000...'));

@@ -9,7 +9,7 @@ const About = () => {
                 threshold: 0.2, // Adjust when the animation should trigger
               });
 return (
-    <motion.div className={styles.container} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <motion.div className={`${styles.container} animate__animated animate__fadeInDown`} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className={`${styles.about} ${inView ? styles.fadeIn : styles.fadeOut}`} ref={ref}>
                     <h1 className={styles.title}>
                     Your Trusted Real Estate Partner</h1>

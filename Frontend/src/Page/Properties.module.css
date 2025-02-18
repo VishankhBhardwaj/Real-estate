@@ -1,0 +1,72 @@
+.FilterContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 75px;
+    padding: 10px;
+    width: 874px;
+    height: 165px;
+}
+.PropertiesParent{
+    overflow: hidden;
+}
+.miniinput{
+    width: 95px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: 2px solid grey;
+    padding: 5px;
+}
+.cityinput{
+    width: 100%;
+    height: 30px;
+    border-radius: 3px;
+    padding: 5px;
+}
+.Filter{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.Properties{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 20px;
+}
+.PropertiesParent{
+    width: 100%;
+    height: 100vh;
+}
+.icons{
+    background-color: #E3A857;
+    width: 91px;
+    height: 47px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.PropertiesCard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 75px;
+    padding: 10px;
+    width: 875px;
+    height: 462px;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    overflow-x: hidden;
+    margin-top: 40px;
+}
+.PropertiesCard::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+    
+}
+.MapContainer{
+    width: 550px;
+    height:55%;
+    margin: 20px;
+    flex-grow: 1;
+}

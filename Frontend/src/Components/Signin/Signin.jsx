@@ -65,6 +65,7 @@ const Signin = () => {
     const[register,setRegister]=useState(false)
 return (
     <>
+    <div className='animate__animated animate__fadeInDown'>
     {!register ? <div className={styles.papa}>
         <div className={styles.signUp}>
            <div>
@@ -112,6 +113,7 @@ return (
            </div>
     </div>
     </div>}
+    </div>
     </>
 )
 }

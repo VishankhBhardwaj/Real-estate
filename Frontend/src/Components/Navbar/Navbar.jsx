@@ -27,7 +27,7 @@ const Navbar = () => {
           <li className={styles.list}><NavLink className={styles.text} to="/">Home</NavLink></li>
           <li className={styles.list}><NavLink className={styles.text} to="/About">About</NavLink></li>
           <li className={styles.list}><NavLink className={styles.text} to="/Contact">Contact</NavLink></li>
-          <li className={styles.list}><NavLink className={styles.text} to="/Agents">Properties</NavLink></li>
+          <li className={styles.list}><NavLink className={styles.text} to="/Properties">Properties</NavLink></li>
         </ul>
       </div>
 
