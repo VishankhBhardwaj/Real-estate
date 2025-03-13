@@ -72,6 +72,9 @@
 .btn:hover {
     background-color: #D09145;
 }
+.btn:hover {
+    background-color: #D09145;
+}
 
 /* Hamburger Menu (Hidden by Default) */
 .hamburger {
@@ -79,7 +82,21 @@
     font-size: 24px;
     cursor: pointer;
 }
-
+.dp{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    border: 2px solid #E3A857;
+    cursor: pointer;
+    aspect-ratio: 3/2;
+    position: absolute;
+    margin-top: -10px;
+}
+.dp:hover{
+    border: 2px solid #D09145;
+    background-color: #E3A857;
+}
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .navigation {
@@ -136,3 +153,4 @@
         transition: all 1s ease;
     }
 }
+

@@ -1,0 +1,24 @@
+.popup{
+    display: flex;
+    gap:10px;
+}
+.image{
+    width: 84px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.heading{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.price{
+    color: rgb(37,99,235);
+}

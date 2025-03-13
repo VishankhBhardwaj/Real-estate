@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Mylist.module.css'
+import Property3DView from '../Property3d/Property3DView'
 const Mylist = () => {
   return (
     <div>
@@ -13,7 +14,9 @@ const Mylist = () => {
                 <h3>User Phone number</h3>
             </div>
         </div>
-        <div className=""></div>
+        <div className="">
+          <Property3DView />
+        </div>
     </div>
   )
 }

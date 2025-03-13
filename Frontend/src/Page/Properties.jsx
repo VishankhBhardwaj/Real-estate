@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import styles from './Properties.module.css';
 import Navbar from '../Components/Navbar/Navbar';
-import PropertiesCard from '../Components/Card/PropertiesCard';
+import PropertiesCard from '../Components/Card/PropertiesCard';  // ✅ Correct import
 import { IoIosSearch } from "react-icons/io";
 import Map from '../Components/Map/Map';
 
@@ -14,39 +14,46 @@ const Properties = () => {
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
     const [bedroom, setBedroom] = useState('');
-
-    const handleFilter = () => {
-        console.log("handleFilter function executed!");
-        console.log("Before filtering:", Properties);
-        
-        if (Properties.length === 0) {
-            console.warn("No properties available to filter!");
-            return;
+    const handleClearFilter = () => {
+        setCity('');
+        setMinPrice('');
+        setMaxPrice('');
+        setBedroom('');
+        setFilter(false);
+    };
+    const handleFilter = async () => {
+        try {
+            let filterData = {
+                location: city || undefined,  // ✅ Match backend field name
+                minPrice: minPrice ? Number(minPrice) : undefined, // ✅ Ensure it's a number
+                maxPrice: maxPrice ? Number(maxPrice) : undefined, 
+                bedrooms: bedroom ? Number(bedroom) : undefined
+            };
+    
+            console.log("Filter Data being sent:", filterData); // Debugging log
+    
+            let filtered = await fetch('http://localhost:3000/api/filter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(filterData)
+            });
+    
+            filtered = await filtered.json();
+            setFilteredProperties(filtered);
+            setFilter(true);
+             // Debugging log
+        } catch (error) {
+            console.error("Failed to fetch properties:", error);
         }
-    
-        const filtered = Properties.filter(property => {
-            console.log("Property:", property);
-            return (
-                (!city || property.city.toLowerCase().includes(city.toLowerCase())) &&
-                (!minPrice || property.price >= (minPrice ? parseFloat(minPrice) : 0)) &&
-                (!maxPrice || property.price <= (maxPrice ? parseFloat(maxPrice) : Infinity)) &&
-                (!bedroom || property.bedrooms === (bedroom ? parseInt(bedroom) : property.bedrooms))
-            );
-        });
-    
-        console.log("Filtered properties:", filtered);
-        
-        setFilteredProperties(filtered);
-        setFilter(true);
-    
-        console.log("State update triggered!");
     };
     
 
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                let result = await fetch('http://localhost:3000/properties');
+                let result = await fetch('http://localhost:3000/api/properties');
                 result = await result.json();
                 setProperties(result);
                 console.log(result);
@@ -101,11 +108,12 @@ const Properties = () => {
                             </div>
                             <div>
                                 <IoIosSearch className={styles.icons} onClick={handleFilter} />
+                                <button className={styles.btn} onClick={handleClearFilter}>Clear Filter</button>
                             </div>
                         </div>
                     </div>
                     <div className={styles.PropertiesCard}>
-                        {filter ? filteredProperties.map((property, index) => (
+                        {filter && Array.isArray(filteredProperties)  ? filteredProperties.map((property, index) => (
                             <PropertiesCard key={index} property={property} />
                         )) : Properties.map((property, index) => (
                             <PropertiesCard key={index} property={property} />
@@ -113,7 +121,7 @@ const Properties = () => {
                     </div>
                 </div>
                 <div className={styles.MapContainer}>
-                    <Map />
+                        {filter?<Map property={filteredProperties}/>:<Map property={Properties} />}
                 </div>
             </div>
         </div>

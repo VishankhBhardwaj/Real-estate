@@ -1,0 +1,79 @@
+.container {
+    min-height: 200px;
+    display: flex;
+    padding-top: 4rem;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 42rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    position: relative;
+    top: -37px;
+    left: 127px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+  }
+  
+  .updateButton {
+    padding: 0.5rem 1rem;
+    background-color: #fbbf24;
+    color: #111827;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .updateButton:hover {
+    background-color: #f59e0b;
+  }
+  
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .infoRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .label {
+    color: #4b5563;
+    min-width: 6rem;
+  }
+  
+  .value {
+    color: #111827;
+  }
+  
+  .avatarContainer {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .avatar {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }

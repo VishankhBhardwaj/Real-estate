@@ -4,3 +4,27 @@
   box-sizing: border-box;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+body{
+  overflow-x: hidden;
+}
+.Toastify__toast-container {
+  top: 1rem !important;
+  right: 1rem !important;
+  left: auto !important;
+  transform: none !important;
+  z-index: 9999 !important;
+}
+
+.Toastify__toast {
+  text-align: left !important;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #E3A857;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}

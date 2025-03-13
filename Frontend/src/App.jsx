@@ -8,6 +8,10 @@ import Signin from './Components/Signin/Signin'
 import About from './Components/About/About'
 import Mylist from './Components/Mylist/Mylist'
 import Properties from './Page/Properties'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import User from './Page/User/User'
+import ContactForm from './Page/Contact/ContactForm'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -47,6 +51,18 @@ const router = createBrowserRouter([
   },{
     path: '/Properties',
     element:<Properties />
+  },{
+    path: '/User',
+    element: <div>
+      <Navbar />
+      <User />
+    </div>
+  },{
+    path: '/Contact',
+    element: <div>
+      <Navbar />
+      <ContactForm />
+    </div>
   }
 ])
 function App() {
@@ -54,6 +70,18 @@ function App() {
 
   return (
     <>
+    <ToastContainer 
+    position="top-right" 
+    autoClose={3000} 
+    hideProgressBar={false} 
+    newestOnTop={false} 
+    closeOnClick 
+    rtl={false} 
+    pauseOnFocusLoss 
+    draggable 
+    pauseOnHover 
+/>
+
     <RouterProvider router={router} />
     </>
   )

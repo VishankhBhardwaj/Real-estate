@@ -16,7 +16,7 @@ const Home = () => {
     useEffect(() => {
         const fetchToppicks = async () => {
 
-        let result =await  fetch('http://localhost:3000/toppicks')
+        let result =await  fetch('http://localhost:3000/api/toppicks')
         result = await result.json()
         setToppicks(result);
         }

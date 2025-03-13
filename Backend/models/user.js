@@ -4,23 +4,26 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        max: 255
+        maxlength: 255
     },
     email: {
         type: String,
         required: true,
-        max: 255
+        maxlength: 255,
+        unique: true,
+        match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.']
     },
     password: {
         type: String,
         required: true,
-        min: 6
+        minlength: 6
     },
     phonenumber: {
         type: Number,
         required: true,
-        min: 10
+        minlength: 10,
+        maxlength: 10
     },
-},{timelapsed:true});
+},{timestamps:true});
 
 module.exports = mongoose.model('User', userSchema);

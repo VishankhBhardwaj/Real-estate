@@ -4,7 +4,7 @@ import { IoBedOutline } from 'react-icons/io5';
 import { FaBath } from 'react-icons/fa';
 import styles from './PropertiesCard.module.css';
 
-function Card({property}) {
+function PropertiesCard({property}) {
   return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
@@ -37,4 +37,4 @@ function Card({property}) {
   );
 }
 
-export default Card;
+export default PropertiesCard;  // ✅ Export it correctly

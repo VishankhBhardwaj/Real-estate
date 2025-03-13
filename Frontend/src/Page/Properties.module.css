@@ -10,6 +10,22 @@
 .PropertiesParent{
     overflow: hidden;
 }
+.btn {
+    background-color: #E3A857; /* Light brown/gold background */
+    color: black; /* Black text */
+    padding: 10px 20px; /* Spacing around text */
+    border: none; /* Remove default border */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-transform: uppercase; /* Uppercase text */
+    position:relative;
+    top: -18px;
+    left: 16px;
+}
+
+.btn:hover {
+    background-color: #D09145;
+}
 .miniinput{
     width: 95px;
     height: 30px;
