@@ -15,7 +15,6 @@ const Mylist = () => {
             </div>
         </div>
         <div className="">
-          <Property3DView />
         </div>
     </div>
   )

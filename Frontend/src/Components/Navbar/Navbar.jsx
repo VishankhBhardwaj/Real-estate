@@ -22,15 +22,6 @@ const Navbar = () => {
   const handleSignin = () => {
     window.location.href = '/Signin';
   };
-
-  // Handle Logout Click
-  const handleLogOut = () => {
-    localStorage.clear();
-    setIsLoggedin(false);
-    setUserData(null);
-    window.location.href = '/';
-  };
-
   // Navigate to User Profile
   const GotoUser = () => {
     window.location.href = '/User';

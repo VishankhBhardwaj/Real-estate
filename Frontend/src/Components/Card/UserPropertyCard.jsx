@@ -6,37 +6,36 @@ import styles from './PropertiesCard.module.css';
 import { MdAddBox } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
-function PropertiesCard({property}) {
-  const handleAddToList = async () => {
-    try {
-      let user = JSON.parse(localStorage.getItem('user-info'));
-      let propertyId = property._id;
-  
-      if (!user) {
-        toast.error("User not found. Please log in.");
-        return;
-      }
-  
-      let signedUser = user.user;
-      let userID = signedUser._id;
-  
-      let result = await fetch('http://localhost:3000/api/userProperties', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId: userID, propertyId: propertyId }) // ✅ Correctly sending body here
-      });
-  
-      result = await result.json();
-      console.log(result);
-  
-      toast.success("Property added successfully");
-    } catch (error) {
-      toast.error("Failed to add property to list");
-      console.error("Failed to add property to list:", error);
-    }
-  };
+function PropertiesCard({property,onRemove}) {
+    const handleRemoveFromList = async () => {
+        try{
+            let user=await JSON.parse(localStorage.getItem('user-info'));
+            let propertyId=property._id;
+            console.log(user);
+            if(user){
+                    let result=await fetch('http://localhost:3000/api/userProperties/remove',{
+                    method:"DELETE",
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({userId:user.user._id,propertyId:propertyId}),
+                    
+                });
+                result=await result.json();
+                    if(result){
+                        toast.success("Property removed successfully");
+                        onRemove(propertyId);
+                    }
+                    else{
+                        toast.error("Failed to remove property from list");
+                        console.error("Failed to remove property from list:", error);
+                    }
+            }
+        }catch(error){
+            toast.error("Failed to remove property from list");
+            console.error("Failed to remove property from list:", error);
+        }
+    };
   return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
@@ -63,9 +62,9 @@ function PropertiesCard({property}) {
             <span className={styles.featureValue}>{property.bathrooms}</span>
             <span className={styles.featureLabel}>bathroom</span>
           </div>
-          <div className={styles.feature} onClick={handleAddToList}>
+          <div className={styles.feature} onClick={handleRemoveFromList}>
             <MdAddBox size={18} />
-            <span className={styles.featureLabel}>Add to List</span>
+            <span className={styles.featureLabel}>Remove from List</span>
           </div>
           <ToastContainer />
           <div className={styles.feature}>

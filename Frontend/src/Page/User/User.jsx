@@ -1,15 +1,54 @@
-import React from 'react';
+import React, { use } from 'react';
 import styles from './User.module.css';
-
+import { useState, useEffect } from 'react';
+import UserPropertyCard from '../../Components/Card/UserPropertyCard';
 function App() {
-  const userInfo = {
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    username: "John Doe",
-    email: "john@email.com"
+  const [Properties, setProperties] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = '/';
   };
 
+  useEffect( () => {
+    async function fetchUser() {
+    let user = await JSON.parse(localStorage.getItem('user-info'));
+    if (user) {
+      setUserInfo(user.user);
+    }
+    // Close the if block
+  }
+  fetchUser();
+}, []);
+  useEffect(() => {
+    const fetchProperties = async () => {
+        try {
+            if (!userInfo || !userInfo._id) return; 
+            let result = await fetch(`http://localhost:3000/api/userProperties/${userInfo._id}`);
+            result = await result.json();
+            let propertiesList = result.map(item => item.propertyId);
+            setProperties(propertiesList);
+            console.log(result);
+        } catch (error) {
+            console.error("Failed to fetch properties:", error);
+        }
+    };
+    if (userInfo._id) {
+      fetchProperties();
+    }
+}, [userInfo]);
+const handleRemoveProperty = (propertyId) => {
+  setProperties((prevProperties) =>
+      prevProperties.filter((property) => property._id !== propertyId)
+  );
+};
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} animate__animated animate__fadeInDown`}>
+      <div className={styles.PropertiesCard}> 
+        {Properties.length > 0 ? Properties.map((property, index) => (
+                  <UserPropertyCard key={index} property={property}  onRemove={handleRemoveProperty} />
+                )) : <div>No properties found</div>}
+        </div>
       <div className={styles.card}>
         <div className={styles.header}>
           <h1 className={styles.title}>User Information</h1>
@@ -19,6 +58,12 @@ function App() {
           >
             Update Profile
           </button>
+          <button 
+            className={styles.updateButton}
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
         
         <div className={styles.infoContainer}>
@@ -26,7 +71,7 @@ function App() {
             <span className={styles.label}>Avatar:</span>
             <div className={styles.avatarContainer}>
               <img 
-                src={userInfo.avatar} 
+                src="https://www.w3schools.com/howto/img_avatar.png"
                 alt="User avatar" 
                 className={styles.avatar}
               />
@@ -35,7 +80,7 @@ function App() {
           
           <div className={styles.infoRow}>
             <span className={styles.label}>Username:</span>
-            <span className={styles.value}>{userInfo.username}</span>
+            <span className={styles.value}>{userInfo.name}</span>
           </div>
           
           <div className={styles.infoRow}>
@@ -44,6 +89,7 @@ function App() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

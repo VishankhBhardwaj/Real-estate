@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Contact.module.css';
-
+import { ToastContainer, toast } from 'react-toastify';
 const Contact = () => {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -15,7 +15,7 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let validationErrors = {};
 
@@ -26,7 +26,31 @@ const Contact = () => {
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
         } else {
-            alert("Form submitted successfully!");
+            try{
+                let result=await fetch("http://localhost:3000/api/contact",{
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify(formData)
+                });
+            }catch(err){
+                console.log(err);
+            }
+            result=await result.json();
+            if(result){
+                toast.success("Form submitted successfully!");
+                setFormData({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            }
+            else{
+                toast.error("Form submission failed!");
+            }
         }
     };
 
@@ -98,6 +122,7 @@ const Contact = () => {
                         </div>
                         <button type="submit" className={styles.submitButton}>Submit</button>
                     </form>
+                    <ToastContainer />
                 </div>
             </div>
             <div className={styles.footer}>

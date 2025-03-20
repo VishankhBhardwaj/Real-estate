@@ -1,19 +1,26 @@
 .container {
-    min-height: 200px;
+  height: auto;
     display: flex;
-    padding-top: 4rem;
+    /* padding-top: 4rem; */
   }
   
   .card {
-    width: 100%;
+    width: 610px;
+    height: 300px;
     max-width: 42rem;
     background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
     padding: 2rem;
     position: relative;
-    top: -37px;
-    left: 127px;
+    top: 13px;
+    left: 34px;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
   }
   
   .header {
@@ -77,3 +84,24 @@
     width: 100%;
     object-fit: cover;
   }
+  .PropertiesCard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    width: 855px;
+    height: 662px;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    overflow-x: hidden;
+    margin-top: 40px;
+    position: relative;
+    top: -27px;
+    left: 8px;
+    border-radius: 0.5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.PropertiesCard::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+    
+}

@@ -14,11 +14,15 @@ const authRoutes = require('./routes/authRoutes');
 const propertyRoutes = require('./routes/propertyRoutes');
 const toppicksRoutes = require('./routes/toppicksRoutes');
 const filteredPropertiesRoutes = require('./routes/filteredPropertiesRoutes');
+const userPropertiesRoutes = require('./routes/UserPropertiesRoutes');
+const UserContactRoutes = require('./routes/contactRoutes');
 // Use Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
 app.use('/api/toppicks', toppicksRoutes);
 app.use('/api/filter',filteredPropertiesRoutes);
+app.use('/api/userProperties', userPropertiesRoutes);
+app.use('/api/contact', UserContactRoutes);
 // Base Route
 app.get('/', (req, res) => {
     res.send('Hello World');
