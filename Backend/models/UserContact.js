@@ -1,26 +1,28 @@
 const mongoose = require('mongoose');
 
 const userContact= new mongoose.Schema({
-    FirstName: {
+      firstName: {
         type: String,
         required: true,
       },
-      LastName: {
+      lastName: {
         type: String,
         required: true,
       },
-      Email: {
-        type: String,
-        required: true,
-        maxlength: 255,
-        unique: true,
-        match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.']
-      },
-        Subject: {
+      email: { 
+        type: String, 
+        required: true, 
+        // unique: true, 
+        lowercase: true, 
+        maxlength: 255, 
+        match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.'],
+        sparse: true
+    },    
+      subject: {
             type: String,
             required: true,
         },
-      Message: {
+      message: {
         type: String,
         required: true,
       },

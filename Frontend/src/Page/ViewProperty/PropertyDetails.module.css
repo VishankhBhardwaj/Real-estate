@@ -1,0 +1,256 @@
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .mainInfo {
+    margin-bottom: 2rem;
+  }
+  
+  .address {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .location {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #666;
+    font-weight: 400;
+  }
+  
+  .pricing {
+    margin: 2rem 0;
+  }
+  
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  
+  .currentPrice {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .originalPrice {
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    color: #666;
+  }
+  
+  .priceDetails {
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .features {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 1rem 0;
+    color: #333;
+    font-size: 1.1rem;
+  }
+  
+  .schools {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .tourButton {
+    padding: 1rem 2rem;
+    background: #0052FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .favoriteButton {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+  }
+  
+  .schoolsSection {
+    margin-top: 3rem;
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+  }
+  
+  .schoolsSection h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .schoolsSection h4 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .schoolDistricts {
+    margin-bottom: 2rem;
+  }
+  
+  .districtRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .schoolsList {
+    margin-top: 2rem;
+  }
+  
+  .schoolRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .schoolInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .schoolName {
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .schoolType {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+  
+  .schoolRating {
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .similarProperties {
+    margin-top: 3rem;
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+  }
+  
+  .similarProperties h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .propertiesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .propertyCard {
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .propertyImage {
+    position: relative;
+    padding-top: 66.67%;
+  }
+  
+  .propertyImage img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .propertyImage .favoriteButton {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+    background: white;
+    font-size: 1.2rem;
+    z-index: 1;
+  }
+  .favoriteButton{
+    border-radius: 100px ;
+  }
+  
+  .propertyInfo {
+    padding: 1rem;
+  }
+  
+  .propertyPrice {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .monthlyEst {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: normal;
+    margin-left: 0.5rem;
+  }
+  
+  .propertyDetails {
+    display: flex;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .propertyLocation {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  .propertyImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .propertyImage:hover img {
+    transform: scale(1.05);
+  }
+  .price{
+    color: #2563eb;
+    font-weight: bold;
+    display: inline; 
+  }

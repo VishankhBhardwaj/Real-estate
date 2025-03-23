@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import styles from './Contact.module.css';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useState } from "react";
+import styles from "./Contact.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Ensure toast styles are applied
+
 const Contact = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: ''
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
     });
     const [errors, setErrors] = useState({});
 
@@ -25,32 +27,47 @@ const Contact = () => {
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
-        } else {
-            try{
-                let result=await fetch("http://localhost:3000/api/contact",{
-                    method:"POST",
-                    headers:{
-                        "Content-Type":"application/json"
-                    },
-                    body:JSON.stringify(formData)
-                });
-            }catch(err){
-                console.log(err);
-            }
-            result=await result.json();
-            if(result){
+            return;
+        }
+
+        setErrors({}); // Clear errors if validation passes
+
+        try {
+            const response = await fetch("http://localhost:3000/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName: formData.firstName, // Convert to lowercase
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message
+                }),
+                 // Match backend schema
+            });
+            const result = await response.json();
+            console.log("Result:", result);
+            if (result.msg === "Contact saved successfully") {
                 toast.success("Form submitted successfully!");
                 setFormData({
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    subject: '',
-                    message: ''
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    subject: "",
+                    message: "",
                 });
             }
-            else{
+            else if(result.msg === "Email already exists"){
+                toast.error("Email already exists");
+            } 
+            else {
                 toast.error("Form submission failed!");
             }
+        } catch (err) {
+            console.error("Error submitting form:", err);
+            toast.error("An error occurred while submitting the form.");
         }
     };
 

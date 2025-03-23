@@ -37,6 +37,9 @@ function PropertiesCard({property}) {
       console.error("Failed to add property to list:", error);
     }
   };
+  const handleviewproperty = () => {
+    window.location.href = `/ViewProperty/${property._id}`;
+  };
   return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
@@ -68,9 +71,9 @@ function PropertiesCard({property}) {
             <span className={styles.featureLabel}>Add to List</span>
           </div>
           <ToastContainer />
-          <div className={styles.feature}>
+          <div className={styles.feature} onClick={() => window.location.href = `/ViewProperty/${property._id}`}>
             <FaEye size={18} />
-            <span className={styles.featureLabel}>View Property</span>
+            <span className={styles.featureLabel} onClick={handleviewproperty}>View Property</span>
           </div>
         </div>
       </div>

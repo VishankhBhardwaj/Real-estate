@@ -61,7 +61,7 @@ const Signin = () => {
 
             let result = await response.json();
 
-            if (result.success) {
+            if (result.msg==='User registered successfully') {
                 localStorage.setItem('user-info', JSON.stringify(result));
                 toast.success(`Welcome ${name}`, {
                     position: "top-right",

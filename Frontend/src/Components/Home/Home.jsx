@@ -13,6 +13,7 @@ import {motion} from 'framer-motion';
 import Contact from '../Contact/Contact';
 const Home = () => {
     const [toppicks, setToppicks] = useState([])
+    const [agents, setAgents] = useState([])
     useEffect(() => {
         const fetchToppicks = async () => {
 
@@ -23,6 +24,18 @@ const Home = () => {
         fetchToppicks();
 
     }, [])  
+    useEffect(() => {
+        const fetchAgents = async () => {
+            try{
+                let result = await fetch('http://localhost:3000/api/agents')
+                result = await result.json()
+                setAgents(result);
+            }catch(error){
+                console.error("Error fetching agent data:", error);
+            }
+        }
+        fetchAgents();
+    },[]);
     const scrollContainerRef = useRef(null);
         
       
@@ -83,9 +96,11 @@ return (
         </div>
         <div className={styles.agentCard}
         ref={scrollContainerRef} style={{ scrollBehavior: "smooth" }}>
-           <AgentCard />
-           <AgentCard />
-           <AgentCard />
+           {
+                agents.map((agent,index) => (
+                     <AgentCard key={index} agent={agent} />
+                ))
+           }
            <GrFormPrevious className={styles.navigateprev} onClick={handleNextClickprev} />
            <MdNavigateNext className={styles.navigate} onClick={handleNextClick} />
         </div>

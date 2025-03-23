@@ -26,6 +26,7 @@ router.post('/signUp', async (req, res) => {
         });
 
         const savedUser = await user.save();
+        console.log(savedUser);
         let token = jwt.sign({ email: email }, "secretkey");
 
         // ✅ FIXED: Removed duplicate response issue
@@ -33,16 +34,21 @@ router.post('/signUp', async (req, res) => {
             expires: new Date(Date.now() + 25892000000),
             httpOnly: true
         });
-
-        return res.json({  // ✅ FIXED: Using return to prevent further execution
-            msg: 'User registered successfully',
-            user: {
-                id: savedUser._id,
-                name: savedUser.name,
-                email: savedUser.email,
-                phonenumber: savedUser.phonenumber
-            }
-        });
+        if(!savedUser) {
+            return res.status(400).json({ msg: 'User registration failed' }); // ✅ FIXED: Added return
+        }
+        else{
+            return res.json({  // ✅ FIXED: Using return to prevent further execution
+                msg: 'User registered successfully',
+                user: {
+                    id: savedUser._id,
+                    name: savedUser.name,
+                    email: savedUser.email,
+                    phonenumber: savedUser.phonenumber
+                }
+            });
+        }
+        
 
     } catch (err) {
         console.error(err);

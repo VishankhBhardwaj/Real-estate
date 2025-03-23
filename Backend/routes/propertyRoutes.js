@@ -1,6 +1,6 @@
 const express = require('express');
 const Propertiesmodel = require('../models/Properties');
-
+const ViewPropertiesmodel = require('../models/ViewProperties');
 const router = express.Router();
 
 // Get All Properties
@@ -17,5 +17,21 @@ router.get('/', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-
+router.get('/:id', async (req, res) => {
+    try{
+        let propertyId = req.params.id;
+        console.log("Requested Property ID:", propertyId);
+        const propertyDetails = await ViewPropertiesmodel.findOne({ propertyId: propertyId }).populate('propertyId');
+        if(!propertyDetails){
+            return res.status(400).json({msg:'No Property found'});
+        }else{
+            console.log("Property Details:", propertyDetails);
+            res.json(propertyDetails);
+        }
+    }catch(err){
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+// Get All ViewProperties
 module.exports = router;

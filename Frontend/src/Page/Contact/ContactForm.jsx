@@ -1,15 +1,16 @@
 import React from 'react'
 import  { useState } from 'react'
 import styles from './ContactForm.module.css'
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Ensure toast styles are applied
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: ''
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: "",
     });
     const [errors, setErrors] = useState({});
 
@@ -17,7 +18,7 @@ const ContactForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let validationErrors = {};
 
@@ -27,8 +28,48 @@ const ContactForm = () => {
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
-        } else {
-            alert("Form submitted successfully!");
+            return;
+        }
+
+        setErrors({}); // Clear errors if validation passes
+
+        try {
+            const response = await fetch("http://localhost:3000/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstName: formData.firstName, // Convert to lowercase
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message
+                }),
+                 // Match backend schema
+            });
+
+            const result = await response.json();
+            console.log("Result:", result);
+            if (result.msg === "Contact saved successfully") {
+                toast.success("Form submitted successfully!");
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    subject: "",
+                    message: "",
+                });
+            } 
+            else if(result.msg === "Email already exists"){
+                toast.error("Email already exists!");
+            }
+            else {
+                toast.error("Form submission failed!");
+            }
+        } catch (err) {
+            console.error("Error submitting form:", err);
+            toast.error("An error occurred while submitting the form.");
         }
     };
     return (
@@ -101,6 +142,7 @@ const ContactForm = () => {
                             </div>
                             <button type="submit" className={styles.submitButton}>Submit</button>
                         </form>
+                        <ToastContainer />
                     </div>
                 </div>
                 <div className={styles.footer}>

@@ -28,8 +28,24 @@
     justify-content: space-between;
     padding: 20px;
 }
+.agentInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.statinner{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .agentText{
     padding: 20px;
+    max-height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .paragraph{
     margin-top: 3px;

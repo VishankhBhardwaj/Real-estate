@@ -4,11 +4,27 @@ import Teamcard from '../Card/Teamcard'
 import { motion } from "framer-motion"
 import { useInView } from 'react-intersection-observer';
 import Property3DView from '../Property3d/Property3DView';
+import { useEffect, useState } from 'react';
 const About = () => {
         const { ref, inView } = useInView({
                 triggerOnce: false, // Set to true if you want the animation only once
                 threshold: 0.2, // Adjust when the animation should trigger
               });
+              const [team, setTeam] = useState([]);
+              useEffect(() => {
+                const fetchData = async () => {
+                    try {
+                        const response = await fetch('http://localhost:3000/api/team'); // Fetch data
+                        const result = await response.json(); // Convert to JSON
+                        setTeam(result); // Update state
+                        console.log(result); // Log the result
+                    } catch (error) {
+                        console.error("Error fetching team data:", error);
+                    }
+                };
+                fetchData();
+            }, []);
+            
 return (
     <motion.div className={`${styles.container} animate__animated animate__fadeInDown`} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <div className={`${styles.about} ${inView ? styles.fadeIn : styles.fadeOut}`} ref={ref}>
@@ -32,10 +48,9 @@ return (
             <div className={styles.teamContainer}>
                     <div className={styles.teamMember}>
                             <div className={styles.teamCard}>
-                                    <Teamcard />
-                                    <Teamcard />
-                                    <Teamcard />
-                                    <Teamcard />
+                                    {team.map((property) => (
+                                            <Teamcard key={property._id} property={property} />
+                                    ))}
                             </div>
                     </div>        
             </div>
