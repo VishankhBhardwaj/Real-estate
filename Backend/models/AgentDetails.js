@@ -8,6 +8,12 @@ const AgentSchema = new mongoose.Schema({
     salesVolume: { type: String, required: true },
     totalSales: { type: Number, required: true },
     averageRating: { type: Number, required: true },
+    profileImage: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    experience: { type: String, required: true },
+    specialization: { type: [String], required: true },
+    achievements: { type: [String], required: true },
+    aboutMe: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Agent', AgentSchema);

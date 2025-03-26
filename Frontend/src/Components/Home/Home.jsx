@@ -11,9 +11,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import {motion} from 'framer-motion';
 import Contact from '../Contact/Contact';
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
     const [toppicks, setToppicks] = useState([])
     const [agents, setAgents] = useState([])
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchToppicks = async () => {
 
@@ -86,7 +88,7 @@ return (
         <div className={styles.agentText}>
             <h1 className={styles.agentHeading}>Start touring homes, no strings attached</h1>
             <p className={styles.agentParagraph}>Unlike many other agents, Redfin agents <br /> won't ask you to sign an exclusive commitment before <br /> they'll take you on a first tour.</p>
-            <button class={styles.button29} role="button">Search for homes</button>
+            <button onClick={()=>{navigate('/Properties')}} class={styles.button29} role="button">Search for homes</button>
         </div>
     </motion.div>
     <div className={styles.agentshowcase}>

@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 const AgentCard = ({agent}) => {
     const navigate = useNavigate()
     const handleClick = () => {
-        navigate('/Details')
+        navigate(`/Details/${agent._id}`)
     }
 return (
     <div className={styles.agentCard}>

@@ -12,7 +12,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import User from './Page/User/User'
 import ContactForm from './Page/Contact/ContactForm'
-import ViewProperty from './Page/ViewProperty/PropertyGallery'
+import PropertyGallery from './Page/ViewProperty/PropertyGallery'
+import Details from './Components/Details/Details'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,10 +38,10 @@ const router = createBrowserRouter([
     </div>
   },
   {
-    path: '/Details',
+    path: '/Details/:agentId',
     element: <div>
       <Navbar />
-      <h1>Details</h1>
+      <Details />
     </div>
   },
   {
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
     path: '/ViewProperty/:propertyId',
     element: <div>
       <Navbar />
-      <ViewProperty />
+      <PropertyGallery />
     </div>
   }
 ])

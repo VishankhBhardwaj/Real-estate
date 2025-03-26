@@ -3,6 +3,9 @@ import { useInView } from "react-intersection-observer";
 import styles from "./Card.module.css";
 
 const Card = ({ property }) => {
+  const handleClick = (id) => {
+    window.location.href = `/ViewProperty/${id}`;
+};
   const { ref, inView } = useInView({
     triggerOnce: false, // Set to true if you want the animation only once
     threshold: 0.2, // Adjust when the animation should trigger
@@ -16,7 +19,7 @@ const Card = ({ property }) => {
       <div className={styles.textContainer}>
         <div className={styles.priceContainer}>
           <h2 className={styles.cardHeading}>{property.name}</h2>
-          <p className={styles.cardPrice}>{property.price}</p>
+          <p className={styles.cardPrice}>${property.price}</p>
         </div>
         <div className={styles.locationContainer}>
           <p className={styles.cardLocation}>{property.location}</p>
@@ -24,7 +27,7 @@ const Card = ({ property }) => {
         </div>
       </div>
       <div className={styles.btnContainer}>
-        <button className={styles.btn}>View Property</button>
+        <button onClick={() => handleClick(property._id)} className={styles.btn}>View Property</button>
       </div>
     </div>
   );

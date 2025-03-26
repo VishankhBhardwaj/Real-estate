@@ -143,7 +143,8 @@ const Contact = () => {
                 </div>
             </div>
             <div className={styles.footer}>
-                <p>© 2035 by Faber & Co Real Estate. Powered and secured by Wix</p>
+            © 2025 [Luxury Estates]. All Rights Reserved.  
+            123 Main Street, Your City, Country | Call us: (123) 456-7890 | Email: contact@luxuryestates.com
             </div>
         </div>
     );

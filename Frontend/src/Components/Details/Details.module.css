@@ -1,0 +1,165 @@
+.agent_profile_page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .back_btn {
+    background: none;
+    border: none;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .back_btn:hover {
+    color: #34495e;
+  }
+  
+  .profile_header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .profile_image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .profile_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile_basic_info {
+    flex: 1;
+  }
+  
+  .profile_basic_info h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 2.5rem;
+  }
+  
+  .title {
+    color: #666;
+    font-size: 1.2rem;
+    margin: 5px 0 20px;
+  }
+  
+  .contact_info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .contact_info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    font-size: 1.1rem;
+  }
+  
+  .profile_stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .stat_item {
+    text-align: center;
+  }
+  
+  .stat_number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .stat_label {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .profile_content {
+    margin-top: 40px;
+  }
+  
+  .profile_content section {
+    margin-bottom: 40px;
+  }
+  
+  .profile_content h3 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .profile_content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+  }
+  
+  .specializations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .specialization_tag {
+    background: #e9ecef;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #495057;
+  }
+  
+  .achievements_section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .achievements_section li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 1.1rem;
+  }
+  
+  .achievements_section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2c3e50;
+  }
+  
+  @media (max-width: 768px) {
+    .profile_header {
+      flex-direction: column;
+    }
+  
+    .profile_image {
+      width: 100%;
+      height: 250px;
+    }
+  
+    .profile_stats {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }

@@ -1,8 +1,9 @@
 .agentCard{
     width: 313.5px;
-    height: 432px;
+    max-height: 432px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border-radius: 12px;
     box-shadow:0 2px 6px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .08);
 }
@@ -43,6 +44,7 @@
 .agentText{
     padding: 20px;
     max-height: 270px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -54,6 +56,7 @@
     display: flex;
     justify-content: space-around;
     padding: 20px;
+    margin-top: auto; /* Push the button to the bottom */
 }
 .tag{
     position: absolute;
@@ -84,6 +87,7 @@
 .button30 {
   align-items: center;
   width: 80%;
+  margin-top: auto;
   appearance: none;
   background-color: #FCFCFD;
   border-radius: 4px;

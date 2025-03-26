@@ -30,7 +30,7 @@ function PropertyGallery() {
     console.log("Updated Data:", data);
   }, [data]); 
   return (
-    <div className='animate__animated animate__fadeInBottomLeft'>
+    <div className='animate__animated animate__fadeInBottomLeft animate__faster'>
       <div className={styles.gallery}>
         {data?.images?.map((image, index) => (
           <div 
