@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
         if(bedrooms){
             query.bedrooms=bedrooms;
         }
-        console.log(query);
         let properties = await Propertiesmodel.find(query);
         if (properties.length === 0) {
             return res.status(400).json({ msg: 'No Properties found' });

@@ -20,12 +20,10 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try{
         let propertyId = req.params.id;
-        console.log("Requested Property ID:", propertyId);
         const propertyDetails = await ViewPropertiesmodel.findOne({ propertyId: propertyId }).populate('propertyId');
         if(!propertyDetails){
             return res.status(400).json({msg:'No Property found'});
         }else{
-            console.log("Property Details:", propertyDetails);
             res.json(propertyDetails);
         }
     }catch(err){

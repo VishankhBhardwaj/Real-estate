@@ -29,7 +29,6 @@ router.get('/:userId',async(req,res)=>{
         if(userProperties.length==0){
             return res.status(400).json({msg:"No Properties found"});
         }
-        console.log(userProperties);
         res.json(userProperties);
     }catch(error){
         return res.status(500).json({msg:"Server Error"});

@@ -48,7 +48,6 @@ router.post("/", async (req, res) => {
         console.log("Request Body:", req.body);
         
         const { firstName, lastName, email, subject, message } = req.body;
-        console.log("Extracted firstName:", firstName);
 
         if (!firstName || !lastName || !email || !subject || !message) {
             return res.status(400).json({ msg: "All fields are required" });

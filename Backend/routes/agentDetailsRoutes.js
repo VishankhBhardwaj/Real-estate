@@ -5,7 +5,6 @@ const AgentDetails = require('../models/AgentDetails');
 router.get('/', async (req, res) => {
     try {
         const agents = await AgentDetails.find();
-        console.log("Agents data:", agents);
         res.status(200).json(agents);
     } catch (error) {
         console.error("Error fetching agent data:", error);

@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
         minlength: 10,
         maxlength: 10
     },
+    profilePic: {
+        type: String,
+        default: 'https://www.w3schools.com/howto/img_avatar.png'
+    },
 },{timestamps:true});
 
 module.exports = mongoose.model('User', userSchema);

@@ -3,7 +3,12 @@ const bcrypt = require('bcrypt');
 const Usermodel = require('../models/user');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-
+const { cloudinary, storage } = require('../cloudinary/index');
+const multer = require('multer');
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 100 * 1024 * 1024 }, // ✅ Allow up to 100MB
+});
 const router = express.Router();
 router.use(cookieParser());
 
@@ -41,7 +46,7 @@ router.post('/signUp', async (req, res) => {
             return res.json({  // ✅ FIXED: Using return to prevent further execution
                 msg: 'User registered successfully',
                 user: {
-                    id: savedUser._id,
+                    _id: savedUser._id,
                     name: savedUser.name,
                     email: savedUser.email,
                     phonenumber: savedUser.phonenumber
@@ -88,5 +93,40 @@ router.post('/signIn', async (req, res) => {
         return res.status(500).send('Server Error'); // ✅ FIXED: Added return to prevent multiple responses
     }
 });
-
+router.post('/update',upload.single('file'), async (req, res) => {
+    const userInfo = JSON.parse(req.body.userInfo);
+    const fileUrl = req.file.path;
+    console.log("Uploaded file:", req.file);
+    console.log("Cloudinary URL:", req.file.path);
+    if (!fileUrl) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const result= await Usermodel.findOne({_id:userInfo._id});
+    if(result){
+        const updatedUser = await Usermodel.findByIdAndUpdate(userInfo._id,{
+            name:userInfo.name,
+            email:userInfo.email,
+            profilePic: fileUrl,
+        },{new:true});
+        
+        if(updatedUser){
+            return res.json({msg:"Profile updated successfully"});
+        }
+        else{
+            return res.status(400).json({msg:"Failed to update profile"});
+        }
+    }
+});
+router.get('/:id', async (req, res) => {
+    try {
+        let user = await Usermodel.findById(req.params.id);
+        if (!user) {
+            return res.status(400).json({ msg: 'User not found' }); // ✅ FIXED: Added return
+        }
+        return res.json(user); // ✅ FIXED: Using return to stop execution after response
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send('Server Error'); // ✅ FIXED: Added return to prevent multiple responses
+    }
+});
 module.exports = router;

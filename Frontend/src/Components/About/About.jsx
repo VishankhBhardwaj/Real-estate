@@ -68,7 +68,7 @@ info@mysite.com</p>
                             <p className={styles.contactText}>Privacy Policy
 
 ​Accessibility Statement​</p>
-                            <p className={styles.contactText}>© 2035 by Filhouse. Powered and secured by Wix </p>
+                            <p className={styles.contactText}>© 2035 by Filhouse. Powered and secured by Luxury Estates </p>
                      </div>
                     </div>
             </div>

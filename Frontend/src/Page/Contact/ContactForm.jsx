@@ -147,7 +147,7 @@ const ContactForm = () => {
                 </div>
                 <div className={styles.footer}>
                 © 2025 [Luxury Estates]. All Rights Reserved.  
-                123 Main Street, Your City, Country | Call us: (123) 456-7890 | Email: contact@luxuryestates.com
+                500 Terry Francine St. San Francisco, CA 94158 | Call us: (123) 456-7890 | Email: contact@luxuryestates.com
 
                 </div>
             </div>
