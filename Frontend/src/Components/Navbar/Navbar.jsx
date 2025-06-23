@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons
@@ -8,7 +8,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userData, setUserData] = useState(null); // Store user data
-
+  const [profilePic, setProfilePic] = useState(null); // Store profile picture
+  const [userInfo, setUserInfo] = useState(null); // Store user info
   // Handle MyList Click
   const handleMyList = () => {
     if (isLoggedin) {
@@ -56,7 +57,31 @@ const Navbar = () => {
 
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
+    
   }, []);
+  useEffect(() => {
+    async function fetchUser() {
+      let user = await JSON.parse(localStorage.getItem('user-info'));
+      if (user) {
+        // setUserInfo(user.user);  ////////FIx this line
+      }
+      // Close the if block
+    }
+    fetchUser();
+    const fetchAvatar = async () => {
+      try {
+          if (!userInfo || !userInfo._id) return;
+          let result = await fetch(`http://localhost:3000/api/auth/${userInfo._id}`);
+          result = await result.json();
+          setProfilePic(result.profilePic);
+      } catch (error) {
+          console.error("Failed to fetch avatar:", error);
+      }
+    }
+    if (userInfo && userInfo._id) {
+      fetchAvatar();
+    }
+  },[userInfo]);
 
   return (
     <nav className={styles.navigation}>
@@ -83,7 +108,7 @@ const Navbar = () => {
       {/* Right Part */}
       <div className={styles.rightpart}>
         <NavLink className={styles.text} onClick={handleMyList} >MyList</NavLink>
-        {isLoggedin ? <img onClick={GotoUser} className={styles.dp} src={photo} alt="user" />: <button className={styles.btn} onClick={handleSignin}>Sign up/LogIn</button>}
+        {isLoggedin ? <img onClick={GotoUser} className={styles.dp} src={profilePic} alt="user" />: <button className={styles.btn} onClick={handleSignin}>Sign up/LogIn</button>}
       </div>
     </nav>
   );

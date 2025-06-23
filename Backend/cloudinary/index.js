@@ -7,16 +7,16 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-// ✅ Fix: Add max file size (50MB) & auto-format/compression
+
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'uploads', // ✅ Cloudinary folder name
-        allowed_formats: ['jpg', 'png', 'jpeg'], // ✅ Allowed formats
-        transformation: [{ width: 800, height: 800, crop: "limit" }], // ✅ Optional: Resize large images
-        resource_type: "auto" // ✅ Allows images & videos
+        folder: 'uploads', 
+        allowed_formats: ['jpg', 'png', 'jpeg'], 
+        transformation: [{ width: 800, height: 800, crop: "limit" }], 
+        resource_type: "auto" 
     },
-    limits: { fileSize: 50 * 1024 * 1024 }, // ✅ 50MB limit
+    limits: { fileSize: 50 * 1024 * 1024 },
 });
 
 module.exports = {

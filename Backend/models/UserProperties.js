@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const userProperties=new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user", // Assuming you have a User model
+        ref: "user", 
         required: true,
       },
       propertyId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Properties", // Reference to your Properties model
+        ref: "Properties",
         required: true,
       },
       addedAt: {

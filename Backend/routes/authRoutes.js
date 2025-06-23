@@ -7,7 +7,7 @@ const { cloudinary, storage } = require('../cloudinary/index');
 const multer = require('multer');
 const upload = multer({
     storage: storage,
-    limits: { fileSize: 100 * 1024 * 1024 }, // ✅ Allow up to 100MB
+    limits: { fileSize: 100 * 1024 * 1024 }, 
 });
 const router = express.Router();
 router.use(cookieParser());
@@ -16,7 +16,7 @@ router.use(cookieParser());
 router.post('/signUp', async (req, res) => {
     let { email, password, name, phonenumber } = req.body;
     if (!email || !password || !name || !phonenumber) {
-        return res.status(400).json({ msg: 'Please enter all fields' }); // ✅ FIXED: Added return to prevent further execution
+        return res.status(400).json({ msg: 'Please enter all fields' });
     }
 
     try {
@@ -31,7 +31,6 @@ router.post('/signUp', async (req, res) => {
         });
 
         const savedUser = await user.save();
-        console.log(savedUser);
         let token = jwt.sign({ email: email }, "secretkey");
 
         // ✅ FIXED: Removed duplicate response issue
@@ -40,10 +39,10 @@ router.post('/signUp', async (req, res) => {
             httpOnly: true
         });
         if(!savedUser) {
-            return res.status(400).json({ msg: 'User registration failed' }); // ✅ FIXED: Added return
+            return res.status(400).json({ msg: 'User registration failed' });
         }
         else{
-            return res.json({  // ✅ FIXED: Using return to prevent further execution
+            return res.json({ 
                 msg: 'User registered successfully',
                 user: {
                     _id: savedUser._id,
@@ -57,7 +56,7 @@ router.post('/signUp', async (req, res) => {
 
     } catch (err) {
         console.error(err);
-        return res.status(500).send('Server Error'); // ✅ FIXED: Added return to prevent multiple responses
+        return res.status(500).send('Server Error'); 
     }
 });
 
@@ -65,18 +64,18 @@ router.post('/signUp', async (req, res) => {
 router.post('/signIn', async (req, res) => {
     let { email, password } = req.body;
     if (!email || !password) {
-        return res.status(400).json({ msg: 'Please enter all fields' }); // ✅ FIXED: Added return
+        return res.status(400).json({ msg: 'Please enter all fields' }); 
     }
 
     try {
         let user = await Usermodel.findOne({ email });
         if (!user) {
-            return res.status(400).json({ msg: 'User not found' }); // ✅ FIXED: Added return
+            return res.status(400).json({ msg: 'User not found' }); 
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ msg: 'Invalid credentials' }); // ✅ FIXED: Added return
+            return res.status(400).json({ msg: 'Invalid credentials' }); 
         }
 
         let token = jwt.sign({ email: email }, "secretkey");
@@ -87,10 +86,10 @@ router.post('/signIn', async (req, res) => {
             httpOnly: true
         });
 
-        return res.json({ msg: 'Login Successful', user }); // ✅ FIXED: Using return to stop execution after response
+        return res.json({ msg: 'Login Successful', user }); 
     } catch (err) {
         console.error(err);
-        return res.status(500).send('Server Error'); // ✅ FIXED: Added return to prevent multiple responses
+        return res.status(500).send('Server Error'); 
     }
 });
 router.post('/update',upload.single('file'), async (req, res) => {
@@ -121,12 +120,12 @@ router.get('/:id', async (req, res) => {
     try {
         let user = await Usermodel.findById(req.params.id);
         if (!user) {
-            return res.status(400).json({ msg: 'User not found' }); // ✅ FIXED: Added return
+            return res.status(400).json({ msg: 'User not found' }); 
         }
-        return res.json(user); // ✅ FIXED: Using return to stop execution after response
+        return res.json(user); 
     } catch (err) {
         console.error(err);
-        return res.status(500).send('Server Error'); // ✅ FIXED: Added return to prevent multiple responses
+        return res.status(500).send('Server Error');
     }
 });
 module.exports = router;
