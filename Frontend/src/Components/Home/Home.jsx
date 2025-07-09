@@ -68,10 +68,10 @@ return (
             <img className={styles.image} src='https://cdn.pixabay.com/photo/2024/04/18/19/01/house-8704811_1280.jpg' alt="" />
         </div>
     </div>
-    <h1 className={styles.heading2}>
+    <h1 className={`${styles.heading2} `}>
         Featured Properties
     </h1>
-    <div className={styles.cardContainer}>
+    <div className={`${styles.cardContainer} `}>
         {toppicks.map((toppick,index) => (
             <Card key={index} property={toppick} />
         ))}

@@ -12,7 +12,7 @@ const Card = ({ property }) => {
   });
 
   return (
-    <div ref={ref} className={`${styles.card} ${inView ? styles.fadeIn : styles.fadeOut}`}>
+    <div ref={ref} className={`${styles.card} ${inView ? styles.fadeIn : styles.fadeOut} ${'animate-marquee'}`}>
       <div className={styles.imageContainer}>
         <img className={styles.cardImage} src={property.image} alt="" />
       </div>

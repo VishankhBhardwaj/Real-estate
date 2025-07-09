@@ -95,8 +95,6 @@ router.post('/signIn', async (req, res) => {
 router.post('/update',upload.single('file'), async (req, res) => {
     const userInfo = JSON.parse(req.body.userInfo);
     const fileUrl = req.file.path;
-    console.log("Uploaded file:", req.file);
-    console.log("Cloudinary URL:", req.file.path);
     if (!fileUrl) {
         return res.status(400).json({ message: 'No file uploaded' });
     }

@@ -28,3 +28,37 @@ body{
 ::-webkit-scrollbar-track {
   background-color: #f5f5f5;
 }
+@media (max-width: 768px) {
+  body::before {
+    content: "Please switch to desktop or laptop as my website is not responsive";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.98);
+    color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 10000;
+    text-align: center;
+    padding: 2rem;
+  }
+  body > *:not(style) {
+    display: none !important;
+  }
+}
+
+@keyframes marquee{
+  0%{
+    transform:translateX(100%)
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+.animate-marquee {
+  animation: marquee 10s linear infinite;
+}
