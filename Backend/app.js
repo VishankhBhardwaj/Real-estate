@@ -7,8 +7,9 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ["https://luxury-estate-lemon.vercel.app"],
-  credentials: true
+  origin: 'https://luxury-estate-navy.vercel.app', // your Vercel frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
 }));
 app.use(express.json({ limit: "100mb" })); 
 app.use(express.urlencoded({ limit: "100mb", extended: true }));
