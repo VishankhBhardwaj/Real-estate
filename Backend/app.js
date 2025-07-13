@@ -3,7 +3,10 @@ const cors = require('cors');
 require('./db/config');
 require("dotenv").config();
 
-const app = express();
+app.use(cors({
+  origin: ["https://luxury-estate-lemon.vercel.app"],
+  credentials: true
+}));
 
 // Middleware
 app.use(cors());
