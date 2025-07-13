@@ -32,7 +32,7 @@ const Properties = () => {
     
             console.log("Filter Data being sent:", filterData); // Debugging log
     
-            let filtered = await fetch('${process.env.REACT_APP_BACKEND_URL}/api/filter', {
+            let filtered = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/filter`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
