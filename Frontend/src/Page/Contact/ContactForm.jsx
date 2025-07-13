@@ -34,7 +34,7 @@ const ContactForm = () => {
         setErrors({}); // Clear errors if validation passes
 
         try {
-            const response = await fetch("http://localhost:3000/api/contact", {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

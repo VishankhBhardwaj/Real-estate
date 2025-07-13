@@ -12,7 +12,7 @@ const Details = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3000/api/agents/${agentId}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}http://localhost:3000/api/agents/${agentId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

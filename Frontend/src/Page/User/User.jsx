@@ -48,7 +48,7 @@ function App() {
       const updatedData = new FormData();
       updatedData.append("userInfo", JSON.stringify(userInfo)); // Convert JSON to string
       updatedData.append("file", file); // Append file
-      const formData= await fetch(`http://localhost:3000/api/auth/update`, {
+      const formData= await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/auth/update`, {
         method: 'POST',
         body: updatedData,
       });

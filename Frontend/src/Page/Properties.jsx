@@ -32,7 +32,7 @@ const Properties = () => {
     
             console.log("Filter Data being sent:", filterData); // Debugging log
     
-            let filtered = await fetch('http://localhost:3000/api/filter', {
+            let filtered = await fetch('${process.env.REACT_APP_BACKEND_URL}/api/filter', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const Properties = () => {
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                let result = await fetch('http://localhost:3000/api/properties');
+                let result = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/properties`);
                 result = await result.json();
                 setProperties(result);
                 console.log(result);

@@ -9,7 +9,7 @@ function PropertyGallery() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3000/api/properties/${propertyId}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/properties/${propertyId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

@@ -51,7 +51,7 @@ const Signin = () => {
 
     const handleregister = async () => {
         try {
-            let response = await fetch('http://localhost:3000/api/auth/signUp', {
+            let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}http://localhost:3000/api/auth/signUp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
