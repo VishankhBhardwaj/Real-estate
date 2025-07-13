@@ -13,7 +13,7 @@ function PropertiesCard({property,onRemove}) {
             let propertyId=property._id;
             console.log(user);
             if(user){
-                    let result=await fetch(`${process.env.REACT_APP_BACKEND_URL}http://localhost:3000/api/userProperties/remove`,{
+                    let result=await fetch(`${import.meta.env.VITE_BACKEND_URL}http://localhost:3000/api/userProperties/remove`,{
                     method:"DELETE",
                     headers:{
                         'Content-Type':'application/json'

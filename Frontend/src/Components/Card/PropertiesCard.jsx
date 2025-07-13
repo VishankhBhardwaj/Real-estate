@@ -20,7 +20,7 @@ function PropertiesCard({property}) {
       let signedUser = user.user;
       let userID = signedUser._id;
   
-      let result = await fetch(`${process.env.REACT_APP_BACKEND_URL}http://localhost:3000/api/userProperties`, {
+      let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}http://localhost:3000/api/userProperties`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

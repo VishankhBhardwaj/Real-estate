@@ -14,7 +14,7 @@ const About = () => {
               useEffect(() => {
                 const fetchData = async () => {
                     try {
-                        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/team`); // Fetch data
+                        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/team`); // Fetch data
                         const result = await response.json(); // Convert to JSON
                         setTeam(result); // Update state
                         console.log(result); // Log the result

@@ -10,7 +10,7 @@ const PropertyDetails = ({property}) => {
      useEffect(() => {
             const fetchProperties = async () => {
                 try {
-                    let result = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/properties`);
+                    let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/properties`);
                     result = await result.json();
                     setProperties(result);
                     console.log(result);
