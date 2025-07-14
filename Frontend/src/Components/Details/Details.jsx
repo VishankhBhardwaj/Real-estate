@@ -12,7 +12,7 @@ const Details = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}http://localhost:3000/api/agents/${agentId}`);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/agents/${agentId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

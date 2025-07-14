@@ -71,7 +71,7 @@ const Navbar = () => {
     const fetchAvatar = async () => {
       try {
           if (!userInfo || !userInfo._id) return;
-          let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}http://localhost:3000/api/auth/${userInfo._id}`);
+          let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/${userInfo._id}`);
           result = await result.json();
           setProfilePic(result.profilePic);
       } catch (error) {
