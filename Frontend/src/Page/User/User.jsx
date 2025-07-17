@@ -48,7 +48,7 @@ function App() {
       const updatedData = new FormData();
       updatedData.append("userInfo", JSON.stringify(userInfo)); // Convert JSON to string
       updatedData.append("file", file); // Append file
-      const formData= await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/update`, {
+      const formData= await fetch(`http://localhost:3000/api/auth/update`, {
         method: 'POST',
         body: updatedData,
       });
@@ -87,7 +87,7 @@ function App() {
     const fetchProperties = async () => {
         try {
             if (!userInfo || !userInfo._id) return; 
-            let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/userProperties/${userInfo._id}`);
+            let result = await fetch(`http://localhost:3000/api/userProperties/${userInfo._id}`);
             result = await result.json();
             let propertiesList = result.map(item => item.propertyId);
             setProperties(propertiesList);
@@ -98,7 +98,7 @@ function App() {
     const fetchAvatar = async () => {
         try {
             if (!userInfo || !userInfo._id) return;
-            let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/${userInfo._id}`);
+            let result = await fetch(`http://localhost:3000/api/auth/${userInfo._id}`);
             result = await result.json();
             setProfilePic(result.profilePic);
         } catch (error) {

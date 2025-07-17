@@ -6,10 +6,19 @@ const app = express();
 
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://luxury-estate-navy.vercel.app'
+];
+
 app.use(cors({
-  origin: 'https://luxury-estate-navy.vercel.app', // your Vercel frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 app.use(express.json({ limit: "100mb" })); 
 app.use(express.urlencoded({ limit: "100mb", extended: true }));

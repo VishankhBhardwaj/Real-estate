@@ -15,7 +15,7 @@ const Signin = () => {
 
     const handleSignin = async () => {
         try {
-            let response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signIn`, {
+            let response = await fetch(`http://localhost:3000/api/auth/signIn`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const Signin = () => {
 
     const handleregister = async () => {
         try {
-            let response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signUp`, {
+            let response = await fetch(`http://localhost:3000/api/auth/signUp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

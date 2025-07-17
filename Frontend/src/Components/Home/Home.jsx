@@ -19,7 +19,7 @@ const Home = () => {
     useEffect(() => {
         const fetchToppicks = async () => {
 
-        let result =await  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/toppicks`)
+        let result =await  fetch(`http://localhost:3000/api/toppicks`)
         result = await result.json()
         setToppicks(result);
         }
@@ -29,7 +29,7 @@ const Home = () => {
     useEffect(() => {
         const fetchAgents = async () => {
             try{
-                let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/agents`)
+                let result = await fetch(`http://localhost:3000/api/agents`)
                 result = await result.json()
                 setAgents(result);
             }catch(error){
