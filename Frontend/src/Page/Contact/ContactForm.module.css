@@ -168,3 +168,35 @@
     background: #CBB492;
     padding: 20px;
   }
+
+
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .para {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .contactContainer {
+    padding: 24px 0;
+  }
+
+  .contact {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+  }
+
+  .formRow {
+    flex-direction: column;
+  }
+
+  .submitButton {
+    width: 100%;
+    align-self: center;
+  }
+}

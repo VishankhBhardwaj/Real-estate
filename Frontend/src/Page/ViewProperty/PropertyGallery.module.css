@@ -48,3 +48,32 @@
     grid-column: 4;
     grid-row: 2;
   }
+
+
+@media screen and (max-width: 768px) {
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+    max-width: 100%;
+  }
+
+  .mainImage {
+    width: 100%;
+    height: 240px;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 180px;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .imageContainer:nth-child(n+4) {
+    display: none;
+  }
+}

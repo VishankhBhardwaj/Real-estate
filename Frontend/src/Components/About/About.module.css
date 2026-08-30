@@ -138,3 +138,86 @@
         display: none;
     }
 }
+
+
+@media screen and (max-width: 768px) {
+  .about {
+    display: flex !important;
+    height: auto;
+    padding: 24px 16px;
+  }
+
+  .title {
+    display: block !important;
+    font-size: clamp(36px, 10vw, 56px);
+    margin-bottom: 12px;
+  }
+
+  .description {
+    display: block !important;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .content {
+    display: flex !important;
+    flex-direction: column;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .para {
+    display: block !important;
+    font-size: 16px;
+    margin: 16px 0;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+  .imageContainer {
+    padding: 10px 0;
+  }
+
+  .teamTitle {
+    font-size: 32px;
+    margin: 16px 10px;
+    text-align: center;
+  }
+
+  .para2 {
+    font-size: 15px;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .teamContainer {
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .teamCard {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 24px;
+  }
+
+  .Footer {
+    height: auto;
+    flex-direction: column;
+    padding: 24px 16px;
+    gap: 20px;
+  }
+
+  .contactInfo {
+    margin-top: 20px;
+    margin-right: 0;
+  }
+}
+

@@ -94,3 +94,62 @@
     font-size: 14px;
     color: #666;
   }
+
+
+@media screen and (max-width: 1024px) {
+  .card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+
+  .cardImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .cardImage img {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .cardContent {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .cardLocation {
+    font-size: 13px;
+    margin: 4px 0;
+  }
+
+  .cardPrice {
+    font-size: 20px;
+    margin: 4px 0;
+  }
+
+  .cardFeatures {
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .featureValue {
+    font-size: 14px;
+  }
+
+  .featureLabel {
+    font-size: 12px;
+  }
+}

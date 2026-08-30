@@ -257,3 +257,165 @@
   box-shadow: #E3A857 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+
+@media screen and (max-width: 1024px) {
+  .ourservices {
+    padding: 30px;
+    height: auto;
+    min-height: auto;
+  }
+  
+  .agentImage {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    height: auto;
+    min-height: 420px;
+  }
+
+  .ImageContainer {
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .heading {
+    position: relative;
+    top: auto;
+    left: auto;
+    font-size: clamp(24px, 6vw, 32px);
+    text-align: center;
+    animation: none;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .paragraph {
+    position: relative;
+    top: auto;
+    left: auto;
+    font-size: clamp(14px, 3.5vw, 18px);
+    text-align: center;
+    animation: none;
+    margin-bottom: 24px;
+    color: #f3f4f6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .inputuser {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 90%;
+    max-width: 340px;
+    height: 46px;
+    font-size: 16px;
+    animation: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding-right: 48px;
+  }
+
+  .searchIcon {
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: calc(5% + 8px);
+    animation: none;
+    border-left: none;
+    font-size: 26px;
+    transform: translateY(3px);
+  }
+
+  .cardContainer {
+    height: auto;
+    min-height: auto;
+    padding: 20px 10px;
+    gap: 20px;
+  }
+
+  .heading2, .heading3 {
+    font-size: 28px;
+    height: auto;
+    padding: 15px 10px;
+    margin-top: 15px;
+  }
+
+  .ourservices {
+    height: auto;
+    flex-direction: column;
+    padding: 20px 15px;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .agentText, .agentText2 {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    text-align: center;
+  }
+
+  .agentHeading {
+    font-size: 26px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .agentParagraph {
+    font-size: 16px;
+    margin-left: 0;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .agentImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+
+  .agentshowcase {
+    position: relative;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .agentCard {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    height: auto;
+    padding-bottom: 20px;
+  }
+
+  .navigate, .navigateprev {
+    position: static;
+    top: auto;
+    right: auto;
+    margin: 10px;
+    display: inline-block;
+  }
+
+  .button29 {
+    width: 100%;
+    max-width: 240px;
+    margin: 20px auto 0 auto;
+    font-size: 16px;
+  }
+}
+

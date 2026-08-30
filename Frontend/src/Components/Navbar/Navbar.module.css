@@ -154,3 +154,88 @@
     }
 }
 
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    padding: 0.75rem 1.25rem;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
+
+  .leftpart {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logoContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    position: static;
+    margin: 0;
+    transform: none;
+    font-size: 1.3rem;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #111;
+    cursor: pointer;
+    z-index: 10002;
+  }
+
+  .links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: calc(100dvh - 60px);
+    overflow-y: auto;
+    background-color: #121214;
+    border-bottom: 1px solid rgba(227, 168, 87, 0.3);
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    z-index: 10001;
+    margin-left: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .list {
+    margin: 0.5rem 0;
+  }
+
+  .text {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .rightpart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rightpart .btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .dp {
+    position: static;
+    margin-top: 0;
+    width: 34px;
+    height: 34px;
+  }
+}
+
+

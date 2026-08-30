@@ -254,3 +254,55 @@
     font-weight: bold;
     display: inline; 
   }
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .address {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .location {
+    font-size: 1.2rem;
+  }
+
+  .currentPrice {
+    font-size: 1.8rem;
+  }
+
+  .features {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .cta {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tourButton {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .favoriteButton {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}

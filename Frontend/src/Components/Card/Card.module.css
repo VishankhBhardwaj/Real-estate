@@ -127,3 +127,35 @@
 .btn:hover {
   transform: scale(1.1);
 }
+
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin: 0 auto 16px auto;
+  }
+
+  .cardImage {
+    height: 180px;
+  }
+
+  .priceContainer {
+    padding: 14px;
+  }
+
+  .locationContainer {
+    padding: 0 14px 14px 14px;
+  }
+
+  .btnContainer {
+    padding: 0 14px 14px 14px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px 16px;
+  }
+}

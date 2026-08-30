@@ -201,3 +201,82 @@
     display: none; /* Chrome, Safari, Opera */
     
 }
+
+
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 95%;
+    max-width: 600px;
+    height: auto;
+    position: static;
+    margin: 1rem auto;
+  }
+
+  .PropertiesCard {
+    width: 95%;
+    max-width: 600px;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    position: static;
+    margin: 1rem auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    position: static;
+    margin: 10px 0;
+    border-radius: 12px;
+  }
+
+  .cardInner {
+    padding: 1.25rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .buttonGroup {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .profileSection {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .PropertiesCard {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    position: static;
+    margin: 15px 0;
+    padding: 10px;
+  }
+}

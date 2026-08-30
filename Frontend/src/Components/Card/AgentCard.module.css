@@ -133,3 +133,43 @@
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
+
+
+@media screen and (max-width: 768px) {
+  .agentCard {
+    width: 100%;
+    max-width: 320px;
+    max-height: none;
+    height: auto;
+    margin: 0 auto 16px auto;
+  }
+
+  .agentContainer {
+    height: 220px;
+  }
+
+  .agentText {
+    width: 100%;
+    max-height: none;
+    padding: 16px;
+  }
+
+  .agentStats {
+    padding: 12px 16px;
+  }
+
+  .agentButtons {
+    padding: 16px;
+  }
+
+  .button30 {
+    width: 100%;
+  }
+
+  .profiletag {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    padding: 6px 12px;
+  }
+}
