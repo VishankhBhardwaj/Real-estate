@@ -14,6 +14,8 @@ import User from './Page/User/User'
 import ContactForm from './Page/Contact/ContactForm'
 import PropertyGallery from './Page/ViewProperty/PropertyGallery'
 import Details from './Components/Details/Details'
+import Chatbot from './Components/Chatbot/Chatbot'
+import CalculatorPage from './Page/CalculatorPage/CalculatorPage'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -72,6 +74,10 @@ const router = createBrowserRouter([
       <Navbar />
       <PropertyGallery />
     </div>
+  },
+  {
+    path: '/Calculator',
+    element: <CalculatorPage />
   }
 ])
 function App() {
@@ -92,6 +98,7 @@ function App() {
 />
 
     <RouterProvider router={router} />
+    <Chatbot />
     </>
   )
 }

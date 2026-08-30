@@ -102,6 +102,30 @@ const Navbar = () => {
           <li className={styles.list}><NavLink className={styles.text} to="/About">About</NavLink></li>
           <li className={styles.list}><NavLink className={styles.text} to="/Contact">Contact</NavLink></li>
           <li className={styles.list}><NavLink className={styles.text} to="/Properties">Properties</NavLink></li>
+          <li className={styles.list}><NavLink className={styles.text} to="/Calculator">Calculator</NavLink></li>
+          <li className={styles.list}>
+            <button 
+              onClick={() => {
+                setIsOpen(false);
+                window.dispatchEvent(new Event('open-luxury-ai'));
+              }} 
+              className={styles.text} 
+              style={{
+                background: 'rgba(227, 168, 87, 0.12)', 
+                border: '1px solid #E3A857', 
+                borderRadius: '20px', 
+                padding: '4px 12px', 
+                cursor: 'pointer', 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '5px', 
+                color: '#b87c2b',
+                fontWeight: '600'
+              }}
+            >
+              ✨ AI Agent
+            </button>
+          </li>
         </ul>
       </div>
 

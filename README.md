@@ -1,23 +1,55 @@
-# 🏡 Luxury Estate – Full-Stack Real Estate Platform
+# 🏡 Luxury Estate – AI-Powered Full-Stack Real Estate Platform
 
-A modern, full-stack real estate web application that allows users to browse, filter, save, and contact agents about properties. Built with **React 19** on the frontend and **Node.js / Express** on the backend, with MongoDB as the database and Cloudinary for media storage.
+A modern, full-stack real estate web application featuring an **Autonomous AI Agent** for natural language property discovery, an **Interactive Mortgage & Rental ROI Calculator**, geospatial mapping, and complete listing management. Built with **React 19** on the frontend, **Node.js / Express** on the backend following clean **MVC Architecture (Controllers & Routes separation)**, **Groq AI SDK** (LLM Tool Calling), MongoDB, and Cloudinary.
 
 🌐 **Live Demo:** [luxury-estate-navy.vercel.app](https://luxury-estate-navy.vercel.app)
 
 ---
 
-## 📸 Features
+## 🌟 Key Features
 
-- 🔐 **User Authentication** – Sign up & Sign in with JWT-based sessions and HTTP-only cookies
-- 🏠 **Property Listings** – Browse all available properties with detailed views
-- 🔍 **Advanced Filtering** – Filter properties by type, price, location, and more
-- ⭐ **My List (Saved Properties)** – Save/remove properties to a personal watchlist
-- 🗺️ **Interactive Map** – Explore property locations via Leaflet/OpenStreetMap integration
-- 👤 **User Profile** – Update profile details and upload a profile picture (via Cloudinary)
-- 📧 **Contact Form** – Submit inquiries; triggers automated email confirmation via Nodemailer
-- 🧑‍💼 **Agent Directory** – Browse and view individual agent profiles
-- 👥 **Team Page** – Meet the team behind Luxury Estate
-- 🏘️ **Top Picks** – Curated highlight of featured properties
+- 🤖 **Autonomous AI Property Agent** – Natural language property discovery powered by Groq function calling (`tools: search_properties`), converting human prompts (*"3 BHK in Gurgaon under 1 Cr"*) into MongoDB queries and rendering live interactive property cards directly in chat.
+- 💰 **Dual-Mode Mortgage & Rental ROI Calculator** – Real-time financial engine computing monthly amortized EMIs, principal vs. interest splits, and expected gross rental yields with reactive sliders.
+- 🔐 **User Authentication & Profiles** – Secure Sign Up & Sign In with JWT-based authentication, password hashing via bcrypt, and Cloudinary avatar uploads.
+- 🏠 **Property Listings & Detail Views** – Browse luxury properties with high-res galleries, amenities, and dynamic specs.
+- 🔍 **Multi-Parameter Filtering** – Filter properties by city, price range, bedrooms, and bathrooms.
+- ⭐ **My List (Watchlist)** – Save and manage favorite properties in a personal list.
+- 🗺️ **Geospatial Map Integration** – Interactive map exploration powered by Leaflet & OpenStreetMap.
+- 📧 **Automated Inquiries** – Contact form with automated email confirmations via Nodemailer (Gmail SMTP).
+- 🧑‍💼 **Agent & Team Directories** – Dedicated agent profiles and agency team showcases.
+
+---
+
+## 🏗️ Architecture Overview (MVC Pattern)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      Client (React 19)                      │
+│       SPA • Vite • AI Chatbot Widget • EMI Calculator       │
+└──────────────────────────────┬──────────────────────────────┘
+                               │ HTTP / JSON
+┌──────────────────────────────▼──────────────────────────────┐
+│                    Express REST API (MVC)                   │
+├──────────────────────────────┬──────────────────────────────┤
+│  Routes Layer                │  Controllers Layer           │
+│  - /api/ai/chat              │  - ai.controller.js          │
+│  - /api/auth                 │  - authController.js         │
+│  - /api/properties           │  - propertyController.js     │
+│  - /api/filter               │  - filteredPropertiesCtrl.js │
+│  - /api/userProperties       │  - userPropertiesCtrl.js     │
+│  - /api/contact              │  - contactController.js      │
+│  - /api/toppicks             │  - toppicksController.js     │
+│  - /api/agents               │  - agentDetailsController.js │
+│  - /api/team                 │  - teamController.js         │
+└──────────────┬──────────────────────────────┬───────────────┘
+               │                              │
+    ┌──────────▼──────────┐        ┌──────────▼──────────┐
+    │   MongoDB Database  │        │   External Services  │
+    │  - Properties       │        │  - Groq AI SDK       │
+    │  - Users            │        │  - Cloudinary Media  │
+    │  - Saved Watchlists │        │  - Nodemailer SMTP   │
+    └─────────────────────┘        └─────────────────────┘
+```
 
 ---
 
@@ -25,51 +57,68 @@ A modern, full-stack real estate web application that allows users to browse, fi
 
 ```
 Real-estate/
-├── Backend/               # Node.js / Express REST API
-│   ├── app.js             # Express app entry point
-│   ├── cloudinary/        # Cloudinary config & storage
-│   ├── db/                # MongoDB connection (Mongoose)
-│   ├── models/            # Mongoose data models
-│   └── routes/            # API route handlers
+├── Backend/                       # Node.js / Express REST API
+│   ├── app.js                     # Express entry point & middleware
+│   ├── cloudinary/                # Cloudinary media storage config
+│   ├── controllers/               # Business logic & controller handlers
+│   │   ├── agentDetailsController.js
+│   │   ├── ai.controller.js       # Groq agent & MongoDB tool search
+│   │   ├── authController.js      # Sign up, sign in, profile update
+│   │   ├── contactController.js   # Inquiries & automated email delivery
+│   │   ├── filteredPropertiesController.js
+│   │   ├── propertyController.js
+│   │   ├── teamController.js
+│   │   ├── toppicksController.js
+│   │   └── userPropertiesController.js
+│   ├── db/                        # MongoDB Mongoose connection
+│   ├── models/                    # Data schemas (Properties, User, Agents, etc.)
+│   └── routes/                    # Clean routing endpoints
 │
-└── Frontend/              # React 19 + Vite SPA
-    ├── index.html
-    ├── vite.config.js
-    └── src/
-        ├── App.jsx        # Router & top-level layout
-        ├── Components/    # Reusable UI components
-        └── Page/          # Full page views
+└── Frontend/                      # React 19 + Vite SPA
+    ├── src/
+    │   ├── App.jsx                # Router, global providers & Chatbot mount
+    │   ├── Components/            # Reusable UI components
+    │   │   ├── Calculator/        # EmiCalculator & investment component
+    │   │   ├── Chatbot/           # Luxury AI Chatbot widget
+    │   │   ├── Card/              # Property & agent cards
+    │   │   ├── Navbar/            # Navigation bar with AI trigger
+    │   │   └── Map/               # Leaflet map integration
+    │   └── Page/                  # Page views (Home, Properties, Calculator, ViewProperty, User)
+    ├── vite.config.js             # Vite configuration
+    └── package.json
 ```
 
 ---
 
 ## 🛠️ Tech Stack
 
+### AI & Financial Engine
+| Technology | Description |
+|---|---|
+| **Groq SDK** | Ultra-fast LLM inference for autonomous property discovery with tool calling |
+| **Custom Financial Engine** | Real-time mortgage amortization, monthly cash-flow, and gross rental yield calculations |
+| **Web Speech API** | Client-side voice recognition for hands-free voice search |
+
 ### Backend
 | Package | Purpose |
 |---|---|
-| Express.js | HTTP server & routing |
-| Mongoose | MongoDB ODM |
-| bcrypt | Password hashing |
-| jsonwebtoken | JWT authentication |
-| cookie-parser | Cookie parsing middleware |
-| Cloudinary + Multer | Image & file uploads |
-| Nodemailer | Transactional email (Gmail SMTP) |
-| dotenv | Environment variable management |
-| nodemon | Development live-reload |
+| **Node.js & Express.js** | RESTful HTTP server & clean MVC routing architecture |
+| **MongoDB & Mongoose** | Document database with relational model references & indexing |
+| **bcrypt & jsonwebtoken** | Secure password hashing & JWT cookie authentication |
+| **Cloudinary & Multer** | Cloud media storage & multipart avatar uploads |
+| **Nodemailer** | Transactional SMTP email delivery |
+| **dotenv & cors** | Environment management & CORS configuration |
 
 ### Frontend
 | Package | Purpose |
 |---|---|
-| React 19 | UI framework |
-| Vite | Build tool & dev server |
-| React Router DOM v7 | Client-side routing |
-| Leaflet + React Leaflet | Interactive property maps |
-| Framer Motion | Animations & transitions |
-| Flowbite React | UI component library |
-| Lucide React & React Icons | Icon sets |
-| React-Toastify | Toast notifications |
-| uvcanvas | Decorative canvas backgrounds |
+| **React 19** | Modern component-driven UI architecture |
+| **Vite** | Next-generation frontend tooling & build pipeline |
+| **React Router DOM v7** | Declarative client-side routing |
+| **Leaflet & React Leaflet** | Geospatial interactive mapping |
+| **Framer Motion & Motion** | Smooth animations & micro-interactions |
+| **Lucide React & React Icons** | Premium icon systems |
+| **React-Toastify** | Responsive toast notification system |
 
 ---
 
@@ -77,67 +126,49 @@ Real-estate/
 
 Base URL: `http://localhost:3000/api`
 
+### 🤖 AI Agent – `/api/ai`
+| Method | Endpoint | Controller Handler | Description |
+|---|---|---|---|
+| `POST` | `/chat` | `chatWithAgent` | Conversational property discovery with Groq tool calling |
+
 ### 🔐 Auth – `/api/auth`
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/signUp` | Register a new user |
-| `POST` | `/signIn` | Log in and receive a JWT cookie |
-| `POST` | `/update` | Update profile info & upload a profile picture |
-| `GET` | `/:id` | Get a user by ID |
+| Method | Endpoint | Controller Handler | Description |
+|---|---|---|---|
+| `POST` | `/signUp` | `signUp` | Register a new user |
+| `POST` | `/signIn` | `signIn` | Authenticate user & issue JWT |
+| `POST` | `/update` | `updateProfile` | Update profile info & upload avatar |
+| `GET` | `/:id` | `getUserById` | Fetch user profile by ID |
 
 ### 🏠 Properties – `/api/properties`
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/` | Get all property listings |
-| `GET` | `/:id` | Get detailed view of a single property |
+| Method | Endpoint | Controller Handler | Description |
+|---|---|---|---|
+| `GET` | `/` | `getAllProperties` | Get all property listings |
+| `GET` | `/:id` | `getPropertyById` | Get detailed property data with populated references |
 
 ### 🔍 Filter – `/api/filter`
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/` | Get filtered properties (query params supported) |
+| Method | Endpoint | Controller Handler | Description |
+|---|---|---|---|
+| `POST` | `/` | `filterProperties` | Query properties by location, minPrice, maxPrice, bedrooms |
 
 ### ⭐ User Properties (My List) – `/api/userProperties`
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Add a property to the user's saved list |
-| `GET` | `/:userId` | Get all saved properties for a user |
-| `DELETE` | `/remove` | Remove a property from the user's saved list |
+| Method | Endpoint | Controller Handler | Description |
+|---|---|---|---|
+| `POST` | `/` | `addUserProperty` | Bookmark a property to user's saved list |
+| `GET` | `/:userId` | `getUserProperties` | Get all saved properties for a specific user |
+| `DELETE` | `/remove` | `removeUserProperty` | Remove a property from saved list |
 
 ### 📧 Contact – `/api/contact`
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/` | Submit a contact inquiry (sends confirmation email) |
+| Method | Endpoint | Controller Handler | Description |
+|---|---|---|---|
+| `POST` | `/` | `submitContact` | Submit inquiry & trigger confirmation email |
 
-### 🏘️ Top Picks – `/api/toppicks`
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/` | Get the featured/top-picked properties |
-
-### 🧑‍💼 Agents – `/api/agents`
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/` | Get all agents |
-| `GET` | `/:agentId` | Get details for a specific agent |
-
-### 👥 Team – `/api/team`
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/` | Get all team members |
-
----
-
-## 🗄️ Data Models
-
-| Model | Description |
-|---|---|
-| `User` | User account with name, email, password (hashed), phone, profilePic |
-| `Properties` | Core property listing data |
-| `ViewProperties` | Extended property detail (populated via propertyId ref) |
-| `UserProperties` | Junction model linking users to their saved properties |
-| `UserContact` | Contact form submissions |
-| `AgentDetails` | Real estate agent profiles |
-| `TeamDetails` | Team member information |
-| `toppicks` | Curated featured property entries |
+### 🏘️ Top Picks & Directories
+| Method | Endpoint | Controller Handler | Description |
+|---|---|---|---|
+| `GET` | `/api/toppicks` | `getAllTopPicks` | Get featured highlight listings |
+| `GET` | `/api/agents` | `getAgents` | Get all real estate agent profiles |
+| `GET` | `/api/agents/:agentId` | `getAgentById` | Get specific agent details |
+| `GET` | `/api/team` | `getTeam` | Get agency team members |
 
 ---
 
@@ -145,15 +176,16 @@ Base URL: `http://localhost:3000/api`
 
 | Path | Component | Description |
 |---|---|---|
-| `/` | `Home` | Landing page with hero, top picks, and highlights |
-| `/Signin` | `Signin` | Login / Sign up form |
-| `/About` | `About` | About Luxury Estate page |
-| `/Properties` | `Properties` | Browseable, filterable property listings |
-| `/ViewProperty/:propertyId` | `PropertyGallery` | Full property detail with gallery & map |
-| `/Details/:agentId` | `Details` | Individual agent profile page |
-| `/Mylist` | `Mylist` | User's saved/bookmarked properties |
-| `/User` | `User` | User profile management |
-| `/Contact` | `ContactForm` | Contact & inquiry form |
+| `/` | `Home` | Hero section, featured top picks, and platform highlights |
+| `/Properties` | `Properties` | Filterable listing directory with interactive map |
+| `/Calculator` | `CalculatorPage` | Standalone mortgage & rental ROI financial estimator |
+| `/ViewProperty/:propertyId` | `PropertyGallery` | Property details, image carousel, specs & embedded EMI calculator |
+| `/Mylist` | `Mylist` | User's bookmarked property watchlist |
+| `/Signin` | `Signin` | User authentication (Sign In / Sign Up) |
+| `/User` | `User` | Profile dashboard and settings |
+| `/Contact` | `ContactForm` | Agent contact and inquiry form |
+| `/About` | `About` | Company story and values |
+| `/Details/:agentId` | `Details` | Agent bio, listings, and contact info |
 
 ---
 
@@ -161,8 +193,10 @@ Base URL: `http://localhost:3000/api`
 
 ### Backend (`Backend/.env`)
 ```env
+PORT=3000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+GROQ_API_KEY=your_groq_api_key
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
@@ -172,18 +206,12 @@ PASSWORD=your_gmail_app_password
 
 ### Frontend (`Frontend/.env`)
 ```env
-VITE_API_URL=http://localhost:3000
+VITE_BACKEND_URL=http://localhost:3000
 ```
 
 ---
 
 ## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v18+)
-- MongoDB Atlas account (or local MongoDB)
-- Cloudinary account
-- Gmail account with App Password enabled
 
 ### 1. Clone the repository
 ```bash
@@ -195,26 +223,20 @@ cd Real-estate
 ```bash
 cd Backend
 npm install
-# Create and fill in your .env file (see above)
+# Create .env with the variables listed above
 npm run dev
-# Server starts at http://localhost:3000
+# Server running at http://localhost:3000
 ```
 
 ### 3. Set up the Frontend
 ```bash
 cd ../Frontend
 npm install
-# Create and fill in your .env file (see above)
 npm run dev
-# App starts at http://localhost:5173
+# Vite dev server running at http://localhost:5173
 ```
 
 ---
 
-## 📬 Contact
-
-For inquiries or contributions, feel free to open an issue or submit a pull request.
-
----
-
-> Built with ❤️ using the MERN stack
+## 📄 License
+This project is open-source and available under the [MIT License](LICENSE).

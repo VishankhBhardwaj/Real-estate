@@ -31,7 +31,7 @@ const ContactForm = () => {
             return;
         }
 
-        setErrors({}); // Clear errors if validation passes
+        setErrors({}); 
 
         try {
             const response = await fetch(`http://localhost:3000/api/contact`, {
@@ -40,13 +40,13 @@ const ContactForm = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    firstName: formData.firstName, // Convert to lowercase
+                    firstName: formData.firstName,
                     lastName: formData.lastName,
                     email: formData.email,
                     subject: formData.subject,
                     message: formData.message
                 }),
-                 // Match backend schema
+             
             });
 
             const result = await response.json();

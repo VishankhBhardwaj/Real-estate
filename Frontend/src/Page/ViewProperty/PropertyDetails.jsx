@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from './PropertyDetails.module.css'
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import styles from './PropertyDetails.module.css';
+import EmiCalculator from '../../Components/Calculator/EmiCalculator';
+
 const PropertyDetails = ({property}) => {
      const [Properties, setProperties] = useState([]);
      const handleClick = (id) => {
@@ -46,6 +46,8 @@ const PropertyDetails = ({property}) => {
           <span>•</span>
           <span>$2,129/month est.</span>
         </div>
+
+        <EmiCalculator initialPrice={property?.price || 10000000} />
 
         <div className={styles.similarProperties}>
         <h3>Similar properties</h3>

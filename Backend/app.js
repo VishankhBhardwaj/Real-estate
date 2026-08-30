@@ -32,6 +32,7 @@ const userPropertiesRoutes = require('./routes/UserPropertiesRoutes');
 const UserContactRoutes = require('./routes/contactRoutes');
 const teamDetailsRoutes = require('./routes/teamRoutes');
 const agentDetailsRoutes = require('./routes/agentDetailsRoutes');
+const aiRoutes = require('./routes/ai.route');
 // Use Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
@@ -41,6 +42,7 @@ app.use('/api/userProperties', userPropertiesRoutes);
 app.use('/api/contact', UserContactRoutes);
 app.use('/api/team', teamDetailsRoutes);
 app.use('/api/agents', agentDetailsRoutes);
+app.use('/api/ai', aiRoutes);
 // Base Route
 app.get('/', (req, res) => {
     res.send('Hello World');
