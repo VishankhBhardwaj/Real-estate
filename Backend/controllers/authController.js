@@ -3,7 +3,7 @@ const Usermodel = require('../models/user');
 const jwt = require('jsonwebtoken');
 
 const signUp = async (req, res) => {
-    let { email, password, name, phonenumber } = req.body;
+    let { email, password, name, phonenumber, role } = req.body;
     if (!email || !password || !name || !phonenumber) {
         return res.status(400).json({ msg: 'Please enter all fields' });
     }
@@ -16,11 +16,15 @@ const signUp = async (req, res) => {
             name,
             email,
             password: hash,
-            phonenumber
+            phonenumber,
+            role: role === 'agent' ? 'agent' : 'buyer'
         });
 
         const savedUser = await user.save();
-        let token = jwt.sign({ email: email }, "secretkey");
+        let token = jwt.sign(
+            { id: savedUser._id, _id: savedUser._id, email: email, role: savedUser.role },
+            process.env.JWT_SECRET || "secretkey"
+        );
         res.cookie("token", token, {
             expires: new Date(Date.now() + 25892000000),
             httpOnly: true
@@ -35,7 +39,8 @@ const signUp = async (req, res) => {
                     _id: savedUser._id,
                     name: savedUser.name,
                     email: savedUser.email,
-                    phonenumber: savedUser.phonenumber
+                    phonenumber: savedUser.phonenumber,
+                    role: savedUser.role
                 }
             });
         }
@@ -62,14 +67,28 @@ const signIn = async (req, res) => {
             return res.status(400).json({ msg: 'Invalid credentials' }); 
         }
 
-        let token = jwt.sign({ email: email }, "secretkey");
+        const userRole = user.role || 'buyer';
+        let token = jwt.sign(
+            { id: user._id, _id: user._id, email: email, role: userRole },
+            process.env.JWT_SECRET || "secretkey"
+        );
 
         res.cookie("token", token, {
             expires: new Date(Date.now() + 25892000000),
             httpOnly: true
         });
 
-        return res.json({ msg: 'Login Successful', user }); 
+        return res.json({ 
+            msg: 'Login Successful', 
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                phonenumber: user.phonenumber,
+                profilePic: user.profilePic,
+                role: userRole
+            } 
+        }); 
     } catch (err) {
         console.error(err);
         return res.status(500).send('Server Error'); 

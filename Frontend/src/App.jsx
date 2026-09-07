@@ -16,6 +16,8 @@ import PropertyGallery from './Page/ViewProperty/PropertyGallery'
 import Details from './Components/Details/Details'
 import Chatbot from './Components/Chatbot/Chatbot'
 import CalculatorPage from './Page/CalculatorPage/CalculatorPage'
+import Chat from './Page/Chat/Chat'
+import AgentChat from './Page/Chat/AgentChat'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -78,6 +80,24 @@ const router = createBrowserRouter([
   {
     path: '/Calculator',
     element: <CalculatorPage />
+  },
+  {
+    path: '/Chat/:agentId',
+    element: <div>
+      <Navbar />
+      <Chat />
+    </div>
+  },
+  {
+    path: '/Chat',
+    element: <div>
+      <Navbar />
+      <Chat />
+    </div>
+  },
+  {
+    path: '/agent/chat',
+    element: <AgentChat />
   }
 ])
 function App() {

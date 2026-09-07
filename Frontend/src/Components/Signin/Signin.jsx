@@ -11,6 +11,7 @@ const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
+    const [role, setRole] = useState('buyer');
     const [register, setRegister] = useState(false);
 
     const handleSignin = async () => {
@@ -20,17 +21,17 @@ const Signin = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify({ email, password })
             });
 
             let result = await response.json();
-            console.warn(result);
 
             if (result.msg === 'Login Successful') {
                 localStorage.setItem('user-info', JSON.stringify(result));
                 toast.success(`Welcome Back ${result.user.name}`, {
                     position: "top-right",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -38,8 +39,12 @@ const Signin = () => {
                 });
 
                 setTimeout(() => {
-                    navigate('/');
-                }, 4000);
+                    if (result.user.role === 'agent') {
+                        navigate('/agent/chat');
+                    } else {
+                        navigate('/');
+                    }
+                }, 1500);
             } else {
                 toast.error(result.msg || 'Login failed');
             }
@@ -56,16 +61,17 @@ const Signin = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, phonenumber, email, password })
+                credentials: 'include',
+                body: JSON.stringify({ name, phonenumber, email, password, role })
             });
 
             let result = await response.json();
 
-            if (result.msg==='User registered successfully') {
+            if (result.msg === 'User registered successfully') {
                 localStorage.setItem('user-info', JSON.stringify(result));
                 toast.success(`Welcome ${name}`, {
                     position: "top-right",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -73,8 +79,12 @@ const Signin = () => {
                 });
 
                 setTimeout(() => {
-                    navigate('/');
-                }, 4000);
+                    if (result.user.role === 'agent') {
+                        navigate('/agent/chat');
+                    } else {
+                        navigate('/');
+                    }
+                }, 1500);
             } else {
                 toast.error(result.msg || 'Registration failed');
             }
@@ -106,9 +116,21 @@ const Signin = () => {
                                     <label htmlFor="password">Password:<br />
                                         <input className={styles.input} type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     </label>
+                                    <label htmlFor="role">I am a:<br />
+                                        <select 
+                                            id="role" 
+                                            className={styles.input} 
+                                            value={role} 
+                                            onChange={(e) => setRole(e.target.value)}
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            <option value="buyer">Buyer / Client</option>
+                                            <option value="agent">Real Estate Agent</option>
+                                        </select>
+                                    </label>
                                     <button className={styles.btn} onClick={handleregister}>Register</button>
                                 </div>
-                                <p className={styles.paragraph}>Forgot Password?</p>
+                                <p className={styles.paragraph}>Already have an account?</p>
                                 <NavLink className={styles.link} onClick={() => setRegister(true)}>Log In</NavLink>
                             </div>
                         </div>
@@ -128,14 +150,13 @@ const Signin = () => {
                                     </label>
                                     <button className={styles.btn} onClick={handleSignin}>Sign In</button>
                                 </div>
-                                <p className={styles.paragraph}>Forgot Password?</p>
+                                <p className={styles.paragraph}>Don't have an account?</p>
                                 <NavLink className={styles.link} onClick={() => setRegister(false)}>Sign Up</NavLink>
                             </div>
                         </div>
                     </div>
                 )}
             </div>
-            {/* Single ToastContainer to avoid duplication */}
             <ToastContainer position="top-right" autoClose={5000} />
         </>
     );

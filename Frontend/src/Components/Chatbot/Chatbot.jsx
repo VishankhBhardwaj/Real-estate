@@ -22,7 +22,6 @@ import {
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
 
-// Sample quick starter prompts
 const STARTER_PROMPTS = [
   { label: '3 BHK in Gurgaon', query: 'Show me 3 BHK properties in Gurgaon' },
   { label: 'Under 1 Crore', query: 'Properties under 1 crore' },
@@ -30,7 +29,6 @@ const STARTER_PROMPTS = [
   { label: '2 BHK with 2 Baths', query: 'Find 2 bedroom properties with 2 bathrooms' }
 ];
 
-// Currency Formatter
 const formatPrice = (val) => {
   if (!val && val !== 0) return '';
   if (val >= 10000000) {
@@ -76,21 +74,20 @@ const Chatbot = () => {
     }
   }, [messages, isOpen]);
 
-  // Listen for global open event
   useEffect(() => {
     const handleOpenAi = () => setIsOpen(true);
     window.addEventListener('open-luxury-ai', handleOpenAi);
     return () => window.removeEventListener('open-luxury-ai', handleOpenAi);
   }, []);
 
-  // Fetch properties cache on demand when IDs are received
+
   const fetchPropertyDetails = async (idList) => {
     if (!idList || idList.length === 0) return;
     const uncachedIds = idList.filter((id) => !propertiesCache[id]);
     if (uncachedIds.length === 0) return;
 
     try {
-      // First try fetching all properties to populate cache
+    
       const res = await fetch(`${BACKEND_URL}/api/properties`);
       if (res.ok) {
         const allProps = await res.json();
@@ -107,7 +104,6 @@ const Chatbot = () => {
     }
   };
 
-  // Handle Speech Recognition
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) {

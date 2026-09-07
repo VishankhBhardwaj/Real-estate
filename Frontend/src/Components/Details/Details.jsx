@@ -49,6 +49,9 @@ const Details = () => {
           <p><i className="fas fa-phone"></i> {agent.phoneNumber}</p>
           <p><i className="fas fa-envelope"></i> {agent.email}</p>
         </div>
+        <button className={styles.chat_btn} onClick={() => navigate(`/Chat/${agentId}`)}>
+          <i className="fas fa-comments"></i> Chat with Agent
+        </button>
       </div>
     </div>
 

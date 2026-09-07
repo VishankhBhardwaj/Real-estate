@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'https://www.w3schools.com/howto/img_avatar.png'
     },
+    role: {
+        type: String,
+        enum: ['buyer', 'agent'],
+        default: 'buyer'
+    }
 },{timestamps:true});
 
 module.exports = mongoose.model('User', userSchema);
