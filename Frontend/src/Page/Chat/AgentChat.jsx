@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './AgentChat.module.css';
 import socket from '../../socket';
+import { API_BASE_URL } from '../../config';
 
 const AgentChat = () => {
   const [conversations, setConversations] = useState([]);
@@ -11,7 +12,7 @@ const AgentChat = () => {
   useEffect(() => {
     const fetchConversations = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/chat/conversations', {
+        const res = await fetch(`${API_BASE_URL}/chat/conversations`, {
           credentials: 'include'
         });
         const data = await res.json();
@@ -33,7 +34,7 @@ const AgentChat = () => {
 
     const fetchMessages = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/chat/conversation/${selectedConversation._id}/messages`, {
+        const res = await fetch(`${API_BASE_URL}/chat/conversation/${selectedConversation._id}/messages`, {
           credentials: 'include'
         });
         const data = await res.json();

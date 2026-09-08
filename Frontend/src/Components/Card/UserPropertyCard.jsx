@@ -6,6 +6,8 @@ import styles from './PropertiesCard.module.css';
 import { MdAddBox } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
+import { API_BASE_URL } from '../../config';
+
 function PropertiesCard({property,onRemove}) {
     const handleRemoveFromList = async () => {
         try{
@@ -13,7 +15,7 @@ function PropertiesCard({property,onRemove}) {
             let propertyId=property._id;
             console.log(user);
             if(user){
-                    let result=await fetch(`http://localhost:3000/api/userProperties/remove`,{
+                    let result=await fetch(`${API_BASE_URL}/userProperties/remove`,{
                     method:"DELETE",
                     headers:{
                         'Content-Type':'application/json'

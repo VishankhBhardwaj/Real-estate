@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { API_BASE_URL } from '../../config';
 
 const Signin = () => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Signin = () => {
 
     const handleSignin = async () => {
         try {
-            let response = await fetch(`http://localhost:3000/api/auth/signIn`, {
+            let response = await fetch(`${API_BASE_URL}/auth/signIn`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,7 +57,7 @@ const Signin = () => {
 
     const handleregister = async () => {
         try {
-            let response = await fetch(`http://localhost:3000/api/auth/signUp`, {
+            let response = await fetch(`${API_BASE_URL}/auth/signUp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

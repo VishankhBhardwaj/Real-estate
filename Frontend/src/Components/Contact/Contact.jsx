@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Ensure toast styles are applied
+import { API_BASE_URL } from "../../config";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const Contact = () => {
         setErrors({}); // Clear errors if validation passes
 
         try {
-            const response = await fetch(`http://localhost:3000/api/contact`, {
+            const response = await fetch(`${API_BASE_URL}/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

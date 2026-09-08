@@ -5,6 +5,8 @@ import { motion } from "framer-motion"
 import { useInView } from 'react-intersection-observer';
 import Property3DView from '../Property3d/Property3DView';
 import { useEffect, useState } from 'react';
+import { API_BASE_URL } from '../../config';
+
 const About = () => {
         const { ref, inView } = useInView({
                 triggerOnce: false, // Set to true if you want the animation only once
@@ -14,7 +16,7 @@ const About = () => {
         useEffect(() => {
                 const fetchData = async () => {
                         try {
-                                const response = await fetch(`http://localhost:3000/api/team`); // Fetch data
+                                const response = await fetch(`${API_BASE_URL}/team`); // Fetch data
                                 const result = await response.json(); // Convert to JSON
                                 setTeam(result); // Update state
                                 console.log(result); // Log the result

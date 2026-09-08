@@ -3,6 +3,7 @@ import  { useState } from 'react'
 import styles from './ContactForm.module.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Ensure toast styles are applied
+import { API_BASE_URL } from '../../config';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ const ContactForm = () => {
         setErrors({}); 
 
         try {
-            const response = await fetch(`http://localhost:3000/api/contact`, {
+            const response = await fetch(`${API_BASE_URL}/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

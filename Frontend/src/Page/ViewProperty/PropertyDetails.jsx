@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PropertyDetails.module.css';
 import EmiCalculator from '../../Components/Calculator/EmiCalculator';
+import { API_BASE_URL } from '../../config';
 
 const PropertyDetails = ({property}) => {
      const [Properties, setProperties] = useState([]);
@@ -10,7 +11,7 @@ const PropertyDetails = ({property}) => {
      useEffect(() => {
             const fetchProperties = async () => {
                 try {
-                    let result = await fetch(`http://localhost:3000/api/properties`);
+                    let result = await fetch(`${API_BASE_URL}/properties`);
                     result = await result.json();
                     setProperties(result);
                     console.log(result);

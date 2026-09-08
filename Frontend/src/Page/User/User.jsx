@@ -3,6 +3,8 @@ import styles from './User.module.css';
 import { useState, useEffect } from 'react';
 import UserPropertyCard from '../../Components/Card/UserPropertyCard';
 import { toast, ToastContainer } from 'react-toastify';
+import { API_BASE_URL } from '../../config';
+
 function App() {
   const [Properties, setProperties] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
@@ -48,7 +50,7 @@ function App() {
       const updatedData = new FormData();
       updatedData.append("userInfo", JSON.stringify(userInfo)); // Convert JSON to string
       updatedData.append("file", file); // Append file
-      const formData= await fetch(`http://localhost:3000/api/auth/update`, {
+      const formData= await fetch(`${API_BASE_URL}/auth/update`, {
         method: 'POST',
         body: updatedData,
       });
@@ -87,7 +89,7 @@ function App() {
     const fetchProperties = async () => {
         try {
             if (!userInfo || !userInfo._id) return; 
-            let result = await fetch(`http://localhost:3000/api/userProperties/${userInfo._id}`);
+            let result = await fetch(`${API_BASE_URL}/userProperties/${userInfo._id}`);
             result = await result.json();
             let propertiesList = result.map(item => item.propertyId);
             setProperties(propertiesList);
@@ -98,7 +100,7 @@ function App() {
     const fetchAvatar = async () => {
         try {
             if (!userInfo || !userInfo._id) return;
-            let result = await fetch(`http://localhost:3000/api/auth/${userInfo._id}`);
+            let result = await fetch(`${API_BASE_URL}/auth/${userInfo._id}`);
             result = await result.json();
             setProfilePic(result.profilePic);
         } catch (error) {

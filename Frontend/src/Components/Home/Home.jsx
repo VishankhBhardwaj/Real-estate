@@ -12,6 +12,8 @@ import { useEffect } from "react";
 import {motion} from 'framer-motion';
 import Contact from '../Contact/Contact';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../config';
+
 const Home = () => {
     const [toppicks, setToppicks] = useState([])
     const [agents, setAgents] = useState([])
@@ -19,7 +21,7 @@ const Home = () => {
     useEffect(() => {
         const fetchToppicks = async () => {
 
-        let result =await  fetch(`http://localhost:3000/api/toppicks`)
+        let result = await fetch(`${API_BASE_URL}/toppicks`)
         result = await result.json()
         setToppicks(result);
         }
@@ -29,7 +31,7 @@ const Home = () => {
     useEffect(() => {
         const fetchAgents = async () => {
             try{
-                let result = await fetch(`http://localhost:3000/api/agents`)
+                let result = await fetch(`${API_BASE_URL}/agents`)
                 result = await result.json()
                 setAgents(result);
             }catch(error){

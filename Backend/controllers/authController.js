@@ -25,10 +25,15 @@ const signUp = async (req, res) => {
             { id: savedUser._id, _id: savedUser._id, email: email, role: savedUser.role },
             process.env.JWT_SECRET || "secretkey"
         );
-        res.cookie("token", token, {
+        const isDevelopment = process.env.NODE_ENV === 'development';
+        const cookieOptions = {
             expires: new Date(Date.now() + 25892000000),
-            httpOnly: true
-        });
+            httpOnly: true,
+            sameSite: isDevelopment ? 'lax' : 'none',
+            secure: isDevelopment ? false : true,
+        };
+
+        res.cookie("token", token, cookieOptions);
         if(!savedUser) {
             return res.status(400).json({ msg: 'User registration failed' });
         }
@@ -73,10 +78,15 @@ const signIn = async (req, res) => {
             process.env.JWT_SECRET || "secretkey"
         );
 
-        res.cookie("token", token, {
+        const isDevelopment = process.env.NODE_ENV === 'development';
+        const cookieOptions = {
             expires: new Date(Date.now() + 25892000000),
-            httpOnly: true
-        });
+            httpOnly: true,
+            sameSite: isDevelopment ? 'lax' : 'none',
+            secure: isDevelopment ? false : true,
+        };
+
+        res.cookie("token", token, cookieOptions);
 
         return res.json({ 
             msg: 'Login Successful', 

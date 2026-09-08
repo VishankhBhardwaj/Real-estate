@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './Details.module.css'; // Importing styles from CSS module
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../config';
+
 const Details = () => {
   const navigate = useNavigate();
   const { agentId } = useParams();
@@ -12,7 +14,7 @@ const Details = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3000/api/agents/${agentId}`);
+        const response = await fetch(`${API_BASE_URL}/agents/${agentId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

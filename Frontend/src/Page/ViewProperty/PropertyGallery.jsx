@@ -3,13 +3,15 @@ import styles from './PropertyGallery.module.css';
 import PropertyDetails from './PropertyDetails';
 import { useParams } from "react-router-dom";
 import { useState } from 'react';
+import { API_BASE_URL } from '../../config';
+
 function PropertyGallery() {
   const { propertyId } = useParams();
   const [data, setData] = useState({ propertyId: {}, images: [] });
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3000/api/properties/${propertyId}`);
+        const response = await fetch(`${API_BASE_URL}/properties/${propertyId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

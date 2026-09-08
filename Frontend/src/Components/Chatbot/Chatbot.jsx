@@ -19,8 +19,7 @@ import {
   Building2, 
   ChevronRight 
 } from 'lucide-react';
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+import { BACKEND_URL } from '../../config';
 
 const STARTER_PROMPTS = [
   { label: '3 BHK in Gurgaon', query: 'Show me 3 BHK properties in Gurgaon' },

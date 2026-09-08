@@ -6,6 +6,8 @@ import styles from './PropertiesCard.module.css';
 import { MdAddBox } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
+import { API_BASE_URL } from '../../config';
+
 function PropertiesCard({property}) {
   const handleAddToList = async () => {
     try {
@@ -20,7 +22,7 @@ function PropertiesCard({property}) {
       let signedUser = user.user;
       let userID = signedUser._id;
   
-      let result = await fetch(`http://localhost:3000/api/userProperties`, {
+      let result = await fetch(`${API_BASE_URL}/userProperties`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

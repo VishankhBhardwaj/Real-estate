@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './Chat.module.css';
-import socket from '../../socket'
+import socket from '../../socket';
+import { API_BASE_URL } from '../../config';
+
 const Chat = () => {
   const { agentId } = useParams();
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const Chat = () => {
     const setupConversation = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/conversation",
+          `${API_BASE_URL}/conversation`,
           {
             method: "POST",
             headers: {
@@ -51,7 +53,7 @@ const Chat = () => {
     const fetchAgent = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/agents/${agentId}`
+          `${API_BASE_URL}/agents/${agentId}`
         );
 
         if (response.ok) {
@@ -73,7 +75,7 @@ const Chat = () => {
     if (!conversationId) return;
     const fetchMessages = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/conversation/${conversationId}/messages`, {
+        const response = await fetch(`${API_BASE_URL}/conversation/${conversationId}/messages`, {
           credentials: "include"
         });
         const data = await response.json();

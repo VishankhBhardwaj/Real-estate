@@ -155,7 +155,8 @@ Real-estate/
 
 ## 📡 API Reference
 
-Base URL: `http://localhost:3000/api`
+Base URL (Production): `https://luxuryestates-2ryq.onrender.com/api`  
+Base URL (Local): `http://localhost:3000/api`
 
 ### 💬 Real-Time Chat & Conversations – `/api/chat`
 | Method | Endpoint | Controller Handler | Description |
@@ -245,7 +246,10 @@ Base URL: `http://localhost:3000/api`
 ### Backend (`Backend/.env`)
 ```env
 PORT=3000
-MONGO_URI=your_mongodb_connection_string
+CLIENT_URL=https://luxury-estate-navy.vercel.app
+NODE_ENV=production
+DB_USERNAME=your_mongodb_username
+DB_PASSWORD=your_mongodb_password
 JWT_SECRET=your_jwt_secret
 GROQ_API_KEY=your_groq_api_key
 CLOUDINARY_CLOUD_NAME=your_cloud_name
@@ -257,7 +261,7 @@ PASSWORD=your_gmail_app_password
 
 ### Frontend (`Frontend/.env`)
 ```env
-VITE_BACKEND_URL=http://localhost:3000
+VITE_BACKEND_URL=https://luxuryestates-2ryq.onrender.com
 ```
 
 ---

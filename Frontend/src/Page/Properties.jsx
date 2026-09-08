@@ -5,6 +5,7 @@ import Navbar from '../Components/Navbar/Navbar';
 import PropertiesCard from '../Components/Card/PropertiesCard';  // ✅ Correct import
 import { IoIosSearch } from "react-icons/io";
 import Map from '../Components/Map/Map';
+import { API_BASE_URL } from '../config';
 
 const Properties = () => {
     const [Properties, setProperties] = useState([]);
@@ -32,7 +33,7 @@ const Properties = () => {
     
             console.log("Filter Data being sent:", filterData); // Debugging log
     
-            let filtered = await fetch(`http://localhost:3000/api/filter`, {
+            let filtered = await fetch(`${API_BASE_URL}/filter`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,7 +54,7 @@ const Properties = () => {
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                let result = await fetch(`http://localhost:3000/api/properties`);
+                let result = await fetch(`${API_BASE_URL}/properties`);
                 result = await result.json();
                 setProperties(result);
                 console.log(result);
